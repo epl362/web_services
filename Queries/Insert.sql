@@ -42,11 +42,11 @@ INSERT INTO `drugs` (`DrugID`, `sideEffects`) VALUES
 ('drug705', 'description');
 
 
-INSERT INTO `patient` (`PatientID`, `Username`, `Password`, `Name`, `Surname`, `Address`, `Status`, `Dead`) VALUES
-('944444', 'afrang01', 'Andreas', 'Andreas', 'Frangou', '9 Georgiou Griva Digeni ,Strovolos', 10, b'0'),
-('955555', 'ppavli02', 'Panayiotis', 'Panayiotis', 'Pavlides', '15 John Kennedy,Lefkosia', 9, b'0'),
-('966666', 'akkous01', 'Andria', 'Andria', 'Kkoushi', 'kandaras12,Aradippou', 8, b'0'),
-('977777', 'epapak02', 'Irene', 'Irene', 'Papacosta', 'Mixalaki Karaoli 36,Aradippou', 7, b'0');
+INSERT INTO `patient` (`PatientID`, `Username`, `Password`, `Name`, `Surname`, `Address`, `Status`, `Dead`, `Relative`) VALUES
+('944444', 'afrang01', 'Andreas', 'Andreas', 'Frangou', '9 Georgiou Griva Digeni ,Strovolos', 10, b'0', 'giorgkou@hotmail.com'),
+('955555', 'ppavli02', 'Panayiotis', 'Panayiotis', 'Pavlides', '15 John Kennedy,Lefkosia', 9, b'0', 'panais@hotmail.com'),
+('966666', 'akkous01', 'Andria', 'Andria', 'Kkoushi', 'kandaras12,Aradippou', 8, b'0', 'kokos@hotmail.com'),
+('977777', 'epapak02', 'Irene', 'Irene', 'Papacosta', 'Mixalaki Karaoli 36,Aradippou', 7, b'0', 'antrikkos@hotmail.com');
 
 
 INSERT INTO `selfharmful` (`PatientID`, `isHarmful`, `Overdose`, `Underdose`, `Details`) VALUES
@@ -67,12 +67,3 @@ INSERT INTO `users` (`Username`, `Password`, `Name`, `Role`, `ClinicID`) VALUES
 ('tchara02', '456456', 'Theodoros', 1, 'clinic3'),
 ('tpapak01', '567567', 'Thekla', 1, 'clinic2'),
 ('safxen01', '678678', 'Sotiroula', 3, 'clinic1');
-
-INSERT INTO `treatment` (`TreatmentID`, `DrugID`) VALUES
-(1, 'drug700'),
-(1, 'drug700'),
-(2, 'drug701'),
-(3, 'drug702'),
-(4, 'drug703'),
-(5, 'drug704'),
-(6, 'drug705');

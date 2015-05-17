@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `consultation` (
   `Updated` bit(1) NULL,
   `IgnoredWarnings` bit(1) NULL,
   `DiagnosisID` int(20) NULL,
-  `TreatmentID` varchar(10) NOT NULL,
+  `TreatmentID` varchar(10) NULL,
   `Comments` varchar(255) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -43,7 +43,8 @@ CREATE TABLE IF NOT EXISTS `patient` (
   `Surname` varchar(30) NOT NULL,
   `Address` varchar(60) NOT NULL,
   `Status` int(2) NOT NULL,
-  `Dead` bit(1) NOT NULL
+  `Dead` bit(1) NOT NULL,
+  `Relative` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `selfharmful` (
@@ -63,13 +64,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `ClinicID` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE IF NOT EXISTS `treatment` (
-  `TreatmentID` int(6) NOT NULL,
-  `DrugID` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-ALTER TABLE `treatment`
- ADD PRIMARY KEY (`TreatmentID`);
 
 CREATE TABLE IF NOT EXISTS `condition` (
   `DiagnosisID` int(20) NOT NULL,
