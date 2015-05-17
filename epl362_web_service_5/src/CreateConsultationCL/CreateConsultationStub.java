@@ -49,7 +49,7 @@
                     __operation = new org.apache.axis2.description.OutOnlyAxisOperation();
                 
 
-            __operation.setName(new javax.xml.namespace.QName("http://ClinicalStaff", "main"));
+            __operation.setName(new javax.xml.namespace.QName("http://Receptionist", "main"));
 	    _service.addOperation(__operation);
 	    
 
@@ -61,7 +61,7 @@
                     __operation = new org.apache.axis2.description.OutOnlyAxisOperation();
                 
 
-            __operation.setName(new javax.xml.namespace.QName("http://ClinicalStaff", "insertConsultation"));
+            __operation.setName(new javax.xml.namespace.QName("http://Receptionist", "insertConsultation"));
 	    _service.addOperation(__operation);
 	    
 
@@ -115,7 +115,7 @@
      */
     public CreateConsultationStub(org.apache.axis2.context.ConfigurationContext configurationContext) throws org.apache.axis2.AxisFault {
         
-                    this(configurationContext,"http://localhost:8080/epl362_web_service_2/services/CreateConsultation.CreateConsultationHttpSoap11Endpoint/" );
+                    this(configurationContext,"http://localhost:8080/epl362_web_service_5/services/CreateConsultation.CreateConsultationHttpSoap11Endpoint/" );
                 
     }
 
@@ -124,7 +124,7 @@
      */
     public CreateConsultationStub() throws org.apache.axis2.AxisFault {
         
-                    this("http://localhost:8080/epl362_web_service_2/services/CreateConsultation.CreateConsultationHttpSoap11Endpoint/" );
+                    this("http://localhost:8080/epl362_web_service_5/services/CreateConsultation.CreateConsultationHttpSoap11Endpoint/" );
                 
     }
 
@@ -170,8 +170,8 @@
                                                                     
                                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
                                                                     main0,
-                                                                    optimizeContent(new javax.xml.namespace.QName("http://ClinicalStaff",
-                                                                    "main")),new javax.xml.namespace.QName("http://ClinicalStaff",
+                                                                    optimizeContent(new javax.xml.namespace.QName("http://Receptionist",
+                                                                    "main")),new javax.xml.namespace.QName("http://Receptionist",
                                                                     "main"));
                                                                 
 
@@ -226,8 +226,8 @@
                                                                     
                                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
                                                                     insertConsultation1,
-                                                                    optimizeContent(new javax.xml.namespace.QName("http://ClinicalStaff",
-                                                                    "insertConsultation")),new javax.xml.namespace.QName("http://ClinicalStaff",
+                                                                    optimizeContent(new javax.xml.namespace.QName("http://Receptionist",
+                                                                    "insertConsultation")),new javax.xml.namespace.QName("http://Receptionist",
                                                                     "insertConsultation"));
                                                                 
 
@@ -281,26 +281,14 @@
         }
         return false;
     }
-     //http://localhost:8080/epl362_web_service_2/services/CreateConsultation.CreateConsultationHttpSoap11Endpoint/
-        public static class ExtensionMapper{
-
-          public static java.lang.Object getTypeObject(java.lang.String namespaceURI,
-                                                       java.lang.String typeName,
-                                                       javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
-
-              
-             throw new org.apache.axis2.databinding.ADBException("Unsupported type " + namespaceURI + " " + typeName);
-          }
-
-        }
-    
+     //http://localhost:8080/epl362_web_service_5/services/CreateConsultation.CreateConsultationHttpSoap11Endpoint/
         public static class Main
         implements org.apache.axis2.databinding.ADBBean{
         
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
-                "http://ClinicalStaff",
+                "http://Receptionist",
                 "main",
-                "ns1");
+                "ns2");
 
             
 
@@ -429,7 +417,7 @@
                   if (serializeType){
                
 
-                   java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://ClinicalStaff");
+                   java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://Receptionist");
                    if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)){
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
                            namespacePrefix+":main",
@@ -444,7 +432,7 @@
                    }
                 if (localArgsTracker){
                              if (localArgs!=null) {
-                                   namespace = "http://ClinicalStaff";
+                                   namespace = "http://Receptionist";
                                    for (int i = 0;i < localArgs.length;i++){
                                         
                                             if (localArgs[i] != null){
@@ -459,7 +447,7 @@
                                                 } else {
                                                    
                                                            // write null attribute
-                                                            namespace = "http://ClinicalStaff";
+                                                            namespace = "http://Receptionist";
                                                             writeStartElement(null, namespace, "args", xmlWriter);
                                                             writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
                                                             xmlWriter.writeEndElement();
@@ -471,7 +459,7 @@
                                  
                                          // write the null attribute
                                         // write null attribute
-                                           writeStartElement(null, "http://ClinicalStaff", "args", xmlWriter);
+                                           writeStartElement(null, "http://Receptionist", "args", xmlWriter);
 
                                            // write the nil attribute
                                            writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
@@ -486,8 +474,8 @@
         }
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
-            if(namespace.equals("http://ClinicalStaff")){
-                return "ns1";
+            if(namespace.equals("http://Receptionist")){
+                return "ns2";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -669,13 +657,13 @@
                                   for (int i = 0;i < localArgs.length;i++){
                                       
                                          if (localArgs[i] != null){
-                                          elementList.add(new javax.xml.namespace.QName("http://ClinicalStaff",
+                                          elementList.add(new javax.xml.namespace.QName("http://Receptionist",
                                                                               "args"));
                                           elementList.add(
                                           org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localArgs[i]));
                                           } else {
                                              
-                                                    elementList.add(new javax.xml.namespace.QName("http://ClinicalStaff",
+                                                    elementList.add(new javax.xml.namespace.QName("http://Receptionist",
                                                                               "args"));
                                                     elementList.add(null);
                                                 
@@ -685,7 +673,7 @@
                                   }
                             } else {
                               
-                                    elementList.add(new javax.xml.namespace.QName("http://ClinicalStaff",
+                                    elementList.add(new javax.xml.namespace.QName("http://Receptionist",
                                                                               "args"));
                                     elementList.add(null);
                                 
@@ -772,7 +760,7 @@
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://ClinicalStaff","args").equals(reader.getName())){
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://Receptionist","args").equals(reader.getName())){
                                 
                                     
                                     
@@ -802,7 +790,7 @@
                                                     //two continuous end elements means we are exiting the xml structure
                                                     loopDone1 = true;
                                                 } else {
-                                                    if (new javax.xml.namespace.QName("http://ClinicalStaff","args").equals(reader.getName())){
+                                                    if (new javax.xml.namespace.QName("http://Receptionist","args").equals(reader.getName())){
                                                          
                                                           nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
                                                           if ("true".equals(nillableValue) || "1".equals(nillableValue)){
@@ -856,9 +844,9 @@
         implements org.apache.axis2.databinding.ADBBean{
         
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
-                "http://ClinicalStaff",
+                "http://Receptionist",
                 "insertConsultation",
-                "ns1");
+                "ns2");
 
             
 
@@ -1081,7 +1069,7 @@
                   if (serializeType){
                
 
-                   java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://ClinicalStaff");
+                   java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://Receptionist");
                    if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)){
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
                            namespacePrefix+":insertConsultation",
@@ -1095,7 +1083,7 @@
                
                    }
                 if (localIdTracker){
-                                    namespace = "http://ClinicalStaff";
+                                    namespace = "http://Receptionist";
                                     writeStartElement(null, namespace, "id", xmlWriter);
                              
                                                if (localId==java.lang.Integer.MIN_VALUE) {
@@ -1108,7 +1096,7 @@
                                     
                                    xmlWriter.writeEndElement();
                              } if (localDocIdTracker){
-                                    namespace = "http://ClinicalStaff";
+                                    namespace = "http://Receptionist";
                                     writeStartElement(null, namespace, "docId", xmlWriter);
                              
 
@@ -1126,7 +1114,7 @@
                                     
                                    xmlWriter.writeEndElement();
                              } if (localDateTracker){
-                                    namespace = "http://ClinicalStaff";
+                                    namespace = "http://Receptionist";
                                     writeStartElement(null, namespace, "date", xmlWriter);
                              
 
@@ -1144,7 +1132,7 @@
                                     
                                    xmlWriter.writeEndElement();
                              } if (localTimeTracker){
-                                    namespace = "http://ClinicalStaff";
+                                    namespace = "http://Receptionist";
                                     writeStartElement(null, namespace, "time", xmlWriter);
                              
                                                if (localTime==java.lang.Integer.MIN_VALUE) {
@@ -1163,8 +1151,8 @@
         }
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
-            if(namespace.equals("http://ClinicalStaff")){
-                return "ns1";
+            if(namespace.equals("http://Receptionist")){
+                return "ns2";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -1342,25 +1330,25 @@
                  java.util.ArrayList attribList = new java.util.ArrayList();
 
                  if (localIdTracker){
-                                      elementList.add(new javax.xml.namespace.QName("http://ClinicalStaff",
+                                      elementList.add(new javax.xml.namespace.QName("http://Receptionist",
                                                                       "id"));
                                  
                                 elementList.add(
                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localId));
                             } if (localDocIdTracker){
-                                      elementList.add(new javax.xml.namespace.QName("http://ClinicalStaff",
+                                      elementList.add(new javax.xml.namespace.QName("http://Receptionist",
                                                                       "docId"));
                                  
                                          elementList.add(localDocId==null?null:
                                          org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localDocId));
                                     } if (localDateTracker){
-                                      elementList.add(new javax.xml.namespace.QName("http://ClinicalStaff",
+                                      elementList.add(new javax.xml.namespace.QName("http://Receptionist",
                                                                       "date"));
                                  
                                          elementList.add(localDate==null?null:
                                          org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localDate));
                                     } if (localTimeTracker){
-                                      elementList.add(new javax.xml.namespace.QName("http://ClinicalStaff",
+                                      elementList.add(new javax.xml.namespace.QName("http://Receptionist",
                                                                       "time"));
                                  
                                 elementList.add(
@@ -1444,7 +1432,7 @@
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://ClinicalStaff","id").equals(reader.getName())){
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://Receptionist","id").equals(reader.getName())){
                                 
                                     nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
                                     if ("true".equals(nillableValue) || "1".equals(nillableValue)){
@@ -1470,7 +1458,7 @@
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://ClinicalStaff","docId").equals(reader.getName())){
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://Receptionist","docId").equals(reader.getName())){
                                 
                                        nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
                                        if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
@@ -1498,7 +1486,7 @@
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://ClinicalStaff","date").equals(reader.getName())){
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://Receptionist","date").equals(reader.getName())){
                                 
                                        nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
                                        if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
@@ -1526,7 +1514,7 @@
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://ClinicalStaff","time").equals(reader.getName())){
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://Receptionist","time").equals(reader.getName())){
                                 
                                     nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
                                     if ("true".equals(nillableValue) || "1".equals(nillableValue)){
@@ -1572,6 +1560,18 @@
 
         }
            
+    
+        public static class ExtensionMapper{
+
+          public static java.lang.Object getTypeObject(java.lang.String namespaceURI,
+                                                       java.lang.String typeName,
+                                                       javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
+
+              
+             throw new org.apache.axis2.databinding.ADBException("Unsupported type " + namespaceURI + " " + typeName);
+          }
+
+        }
     
             private  org.apache.axiom.om.OMElement  toOM(CreateConsultationCL.CreateConsultationStub.Main param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {

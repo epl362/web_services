@@ -22,58 +22,29 @@ public class Login {
 		};
 
 	}
-
-	public boolean getAccess(String Username) throws Exception {
-		try {
-			String query = "Select * From users";
-			resSet = stmt.executeQuery(query);
-			while (resSet.next()) {
-				String name = resSet.getString("Password");
-				//System.out.println(name);
-				return true;
-
-			}
-
-		} catch (Exception ex) {
-			System.out.println("ERROR" + ex);
-		};
-		return false;
-	}
 	
-	public void systemLogin(String Username, String Password) throws Exception {
+	public int systemLogin(String Username, String Password) throws Exception {
 		try {
 			String query = "Select * From `users` where Username=\""+Username+"\" AND Password=\""+Password+"\"";
 			resSet = stmt.executeQuery(query);
 
 			if (resSet.next()) {
-			//	String name = resSet.getString("Password");
 				int role = resSet.getInt("Role");
-				switch(role){
-				case 1: 
-					System.out.println("Welcome Dr.");
-					break;
-				case 2:
-					System.out.println("Welcome Receptionist.");
-					break;
-				case 3:
-					System.out.println("Welcome Record Staff.");
-					break;
-				}
-				
-			}
-			else{
-				System.out.println("Invalid username or password.");
+				return role;
 			}
 
 		} catch (Exception ex) {
 			System.out.println("ERROR" + ex);
 		};
+		return -1;
 	}
 	
+
 	public static void main(String [] args){
 		try {
 			Login objA = new Login();
-			objA.systemLogin("safxen01", "678678");
+			int r = objA.systemLogin("eandre02", "345345");
+			System.out.println(r);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

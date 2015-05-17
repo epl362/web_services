@@ -143,6 +143,22 @@
             }
                 
            /**
+            * auto generated Axis2 call back method for getLastTreatment method
+            * override this method for handling normal response from getLastTreatment operation
+            */
+           public void receiveResultgetLastTreatment(
+                    PatientCL.PatientStub.GetLastTreatmentResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getLastTreatment operation
+           */
+            public void receiveErrorgetLastTreatment(java.lang.Exception e) {
+            }
+                
+           /**
             * auto generated Axis2 call back method for getIsHarmful method
             * override this method for handling normal response from getIsHarmful operation
             */
@@ -172,6 +188,70 @@
            * override this method for handling error response from getStatus operation
            */
             public void receiveErrorgetStatus(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for getRelative method
+            * override this method for handling normal response from getRelative operation
+            */
+           public void receiveResultgetRelative(
+                    PatientCL.PatientStub.GetRelativeResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getRelative operation
+           */
+            public void receiveErrorgetRelative(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for getLastTreatmentDate method
+            * override this method for handling normal response from getLastTreatmentDate operation
+            */
+           public void receiveResultgetLastTreatmentDate(
+                    PatientCL.PatientStub.GetLastTreatmentDateResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getLastTreatmentDate operation
+           */
+            public void receiveErrorgetLastTreatmentDate(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for getUpdated method
+            * override this method for handling normal response from getUpdated operation
+            */
+           public void receiveResultgetUpdated(
+                    PatientCL.PatientStub.GetUpdatedResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getUpdated operation
+           */
+            public void receiveErrorgetUpdated(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for getDroppedIn method
+            * override this method for handling normal response from getDroppedIn operation
+            */
+           public void receiveResultgetDroppedIn(
+                    PatientCL.PatientStub.GetDroppedInResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getDroppedIn operation
+           */
+            public void receiveErrorgetDroppedIn(java.lang.Exception e) {
             }
                 
            /**
