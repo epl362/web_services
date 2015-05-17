@@ -23,7 +23,7 @@ public class Database {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			String connectionUrl = "jdbc:mysql://localhost:3306/ws362";
 			String connectionUser = "mpapan01";
-			String connectionPassword = "1234";
+			String connectionPassword = "";
 			conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
 			
 		} catch (Exception e) {

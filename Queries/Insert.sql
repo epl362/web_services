@@ -21,7 +21,7 @@ INSERT INTO `consultation` (`PatientID`, `DoctorID`, `Date`, `Time`, `ShowedUp`,
 (966666, 'tchara02', '2015-04-03', 17,b'1', b'1', b'1', b'1', '6', 'drug3', 'none'),
 (977777, 'tchara02', '2015-04-01', 19,b'1', b'1', b'1', b'1', '3', 'drug1', 'none');
 
-INSERT INTO `condition` (`DiagnosisID`, `Description`) VALUES
+INSERT INTO `condition_` (`DiagnosisID`, `Description`) VALUES
 ('1', 'illness 1'),
 ('2', 'illness 2'),
 ('3', 'illness 3'),
@@ -46,7 +46,9 @@ INSERT INTO `patient` (`PatientID`, `Username`, `Password`, `Name`, `Surname`, `
 ('944444', 'afrang01', 'Andreas', 'Andreas', 'Frangou', '9 Georgiou Griva Digeni ,Strovolos', 10, b'0', 'giorgkou@hotmail.com'),
 ('955555', 'ppavli02', 'Panayiotis', 'Panayiotis', 'Pavlides', '15 John Kennedy,Lefkosia', 9, b'0', 'panais@hotmail.com'),
 ('966666', 'akkous01', 'Andria', 'Andria', 'Kkoushi', 'kandaras12,Aradippou', 8, b'0', 'kokos@hotmail.com'),
-('977777', 'epapak02', 'Irene', 'Irene', 'Papacosta', 'Mixalaki Karaoli 36,Aradippou', 7, b'0', 'antrikkos@hotmail.com');
+('977777', 'epapak02', 'Irene', 'Irene', 'Papacosta', 'Mixalaki Karaoli 36,Aradippou', 7, b'0', 'antrikkos@hotmail.com'),
+('988888', 'yeleft91', 'Yiota', 'Yiota', 'Eleftheriou', 'Mixalaki Kontou 22,Lemesos', 7, b'0', 'yelth@hotmail.com'),
+('999999', 'ageorg99', 'Andreas', 'Andreas', 'Georgiou', 'Griva Digeni 3,Lemesos', 7, b'0', 'ageorg@gmail.com');
 
 
 INSERT INTO `selfharmful` (`PatientID`, `isHarmful`, `Overdose`, `Underdose`, `Details`) VALUES
@@ -56,14 +58,15 @@ INSERT INTO `selfharmful` (`PatientID`, `isHarmful`, `Overdose`, `Underdose`, `D
 (977777, b'0', b'0', b'0', 'none');
 
 INSERT INTO `selfharmful` (`PatientID`, `isHarmful`, `Overdose`, `Underdose`, `Details`) VALUES
-(955555, b'0', b'0', b'0', 'none'),
-(955555, b'1', b'1', b'0', 'none');
+(988888, b'0', b'0', b'0', 'none'),
+(999999, b'1', b'1', b'0', 'none');
 
 
 INSERT INTO `users` (`Username`, `Password`, `Name`, `Role`, `ClinicID`) VALUES
 ('paziz001', '123123', 'Philippos', 2, 'clinic1'),
 ('dpash01', '234234', 'Jimmys', 3, 'clinic2'),
 ('eandre02', '345345', 'Evanthia', 1, 'clinic1'),
+('mpapae03', '555555', 'm', 1, 'clinic2'),
 ('tchara02', '456456', 'Theodoros', 1, 'clinic3'),
 ('tpapak01', '567567', 'Thekla', 1, 'clinic2'),
 ('safxen01', '678678', 'Sotiroula', 3, 'clinic1');

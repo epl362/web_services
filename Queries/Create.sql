@@ -65,12 +65,12 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-CREATE TABLE IF NOT EXISTS `condition` (
+CREATE TABLE IF NOT EXISTS `condition_` (
   `DiagnosisID` int(20) NOT NULL,
   `Description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-ALTER TABLE `condition`
+ALTER TABLE `condition_`
  ADD PRIMARY KEY (`DiagnosisID`);
 
 
