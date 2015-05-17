@@ -27,7 +27,7 @@ public class GetAppointments {
 	public String getAppointmentsByDate(String date, String DocID){
 		String appointments="";
 		try {
-			String query = "Select `patient`.Name, `patient`.Surname, `consultation`.Time, `consultation`.DroppedIn, `patient`.PatientID from `consultation`, `patient` Where `consultation`.DoctorID='"+DocID+"' and `consultation`.PatientID=`patient`.PatientID and `consultation`.Date='"+date+"'";
+			String query = "Select `patient`.Name, `patient`.Surname, `consultation`.Time, `consultation`.DroppedIn, `consultation`.Updated, `patient`.PatientID from `consultation`, `patient` Where `consultation`.DoctorID='"+DocID+"' and `consultation`.PatientID=`patient`.PatientID and `consultation`.Date='"+date+"'";
 			resSet = stmt.executeQuery(query);
 
 			while (resSet.next()) {
@@ -35,8 +35,9 @@ public class GetAppointments {
 				String surname = resSet.getString("Surname");
 				int time = resSet.getInt("Time");
 				int droppedIn = resSet.getInt("DroppedIn");
+				int updated = resSet.getInt("Updated");
 				int id = resSet.getInt("PatientID");
-				appointments+=name+"/"+surname+"/"+time+"/"+droppedIn+"/"+id+"#";
+				appointments+=name+"/"+surname+"/"+time+"/"+droppedIn+"/"+updated+"/"+id+"#";
 			}
 			conn.close();
 			return appointments;

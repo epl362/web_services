@@ -4,7 +4,9 @@ INSERT INTO `allergies` (`PatientID`, `AllergiesName`) VALUES
 (955555, 'drug2'),
 (955555, 'drug3'),
 (966666, 'drug1'),
-(977777, 'drug1');
+(977777, 'drug1'),
+(999999, 'drug700'),
+(999999, 'drug701');
 
 
 INSERT INTO `clinic` (`ClinicID`, `Name`, `Location`) VALUES
@@ -47,8 +49,9 @@ INSERT INTO `patient` (`PatientID`, `Username`, `Password`, `Name`, `Surname`, `
 ('955555', 'ppavli02', 'Panayiotis', 'Panayiotis', 'Pavlides', '15 John Kennedy,Lefkosia', 9, b'0', 'panais@hotmail.com'),
 ('966666', 'akkous01', 'Andria', 'Andria', 'Kkoushi', 'kandaras12,Aradippou', 8, b'0', 'kokos@hotmail.com'),
 ('977777', 'epapak02', 'Irene', 'Irene', 'Papacosta', 'Mixalaki Karaoli 36,Aradippou', 7, b'0', 'antrikkos@hotmail.com'),
-('988888', 'yeleft91', 'Yiota', 'Yiota', 'Eleftheriou', 'Mixalaki Kontou 22,Lemesos', 7, b'0', 'yelth@hotmail.com'),
-('999999', 'ageorg99', 'Andreas', 'Andreas', 'Georgiou', 'Griva Digeni 3,Lemesos', 7, b'0', 'ageorg@gmail.com');
+('988888', 'epapak02', 'Irene', 'Irene', 'Papacosta', 'Mixalaki Karaoli 36,Aradippou', 7, b'0', 'antrikkos@hotmail.com'),
+('988889', 'ageorg99', 'Andreas', 'Andreas', 'Georgiou', 'Griva Digeni 3,Lemesos', 7, b'0', 'ageorg@gmail.com'),
+('999999', 'inikol03', 'Iasonas', 'Iasonas', 'Nicolaou', '9 Oute j pou kserw ,Egkomi', 10, b'0', 'marulla@hotmail.com');
 
 
 INSERT INTO `selfharmful` (`PatientID`, `isHarmful`, `Overdose`, `Underdose`, `Details`) VALUES

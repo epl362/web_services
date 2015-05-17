@@ -45,10 +45,11 @@ public class UpdateConsultationReceptionist {
 
 	public static void main(String[] args) {
 		UpdateConsultationReceptionist uc = new UpdateConsultationReceptionist();
-		uc.setShowedUp(1, 966666, "tpapak01", "2015-03-01");
+		uc.setShowedUp(1, 999999, "eandre02", "2015-05-18");
+		
 		
 		UpdateConsultationReceptionist uc2 = new UpdateConsultationReceptionist();
-		uc2.setDroppedIn(1, 966666, "tpapak01", "2015-03-01");
+		uc2.setDroppedIn(1, 999999, "eandre02", "2015-05-18");
 
 	}
 

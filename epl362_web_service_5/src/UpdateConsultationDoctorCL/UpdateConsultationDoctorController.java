@@ -45,7 +45,7 @@ public class UpdateConsultationDoctorController {
 		stub.setDiagnosis(request);
 	}
 	
-	public void setTreatment(int treatment, int id, String docId, String date) throws RemoteException {
+	public void setTreatment(String treatment, int id, String docId, String date) throws RemoteException {
 		
 		// Creating the request
 		UpdateConsultationDoctorStub.SetTreatment request = new UpdateConsultationDoctorStub.SetTreatment();
@@ -69,11 +69,11 @@ public class UpdateConsultationDoctorController {
 	
 	public static void main (String [] args) throws RemoteException{
 		UpdateConsultationDoctorController randevouz = new UpdateConsultationDoctorController();
-		randevouz.setUpdated(1, 966666, "tpapak01", "2015-04-01");
-		randevouz.setIgnoredWarnings(0, 966666, "tpapak01", "2015-04-01");
-		randevouz.setDiagnosis(4, 966666, "tpapak01", "2015-04-01");
-		randevouz.setTreatment(3, 966666, "tpapak01", "2015-04-01");
-		randevouz.setComment("please na doulepsei jai o giatros!!", 966666, "tpapak01", "2015-04-01");
+		randevouz.setUpdated(0, 966666, "tpapak01", "2015-05-21");
+		randevouz.setIgnoredWarnings(1, 966666, "tpapak01", "2015-05-21");
+		randevouz.setDiagnosis(2, 966666, "tpapak01", "2015-05-21");
+		randevouz.setTreatment("drug704", 966666, "tpapak01", "2015-05-21");
+		randevouz.setComment("testing the Web Service", 966666, "tpapak01", "2015-05-21");
 	}
 
 

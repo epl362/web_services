@@ -50,7 +50,7 @@ public class CreateConsultation {
 	
 	public static void main(String[] args) {
 		CreateConsultation randevouz = new CreateConsultation();
-		randevouz.insertConsultation(966666, "tpapak01", "2015-04-01", 14);
+		randevouz.insertConsultation(999999, "eandre02", "2015-05-18", 11);
 
 	}
 

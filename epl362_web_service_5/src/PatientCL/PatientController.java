@@ -4,6 +4,8 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
+import org.apache.axis2.AxisFault;
+
 import Connection.DBConnection;
 
 public class PatientController {
@@ -18,6 +20,10 @@ public class PatientController {
 	private ArrayList <String> treatment = new ArrayList<String>(); 
 	private String diagnosis;
 	private ArrayList <String> comments = new ArrayList<String>(); 
+	private String relative;
+	private String lastTreatment;
+	private int DroppedIn;
+	private String lastTreatmentDate;
 	
 	public PatientController(int id) throws RemoteException{
 		PatientStub stub = new PatientStub();
@@ -139,6 +145,27 @@ public class PatientController {
 			this.comments.add(token3.nextToken());
 			}
 		
+		//RELATIVE EMAIL
+		PatientStub.GetRelative requestRelative = new PatientStub.GetRelative();
+		requestRelative.setId(id);
+		
+		PatientStub.GetRelativeResponse responseRelative = stub.getRelative(requestRelative);
+		this.relative=responseRelative.get_return();
+		
+		//LAST TREATMENT
+		PatientStub.GetLastTreatment requestLT = new PatientStub.GetLastTreatment();
+		requestLT.setId(id);
+				
+		PatientStub.GetLastTreatmentResponse responseLT = stub.getLastTreatment(requestLT);
+		this.lastTreatment=responseLT.get_return();
+		
+		//LAT TREATMENT DATE
+		PatientStub.GetLastTreatmentDate requestLTD = new PatientStub.GetLastTreatmentDate();
+		requestLTD.setId(id);
+				
+		PatientStub.GetLastTreatmentDateResponse responseLTD = stub.getLastTreatmentDate(requestLTD);
+		this.lastTreatmentDate=responseLTD.get_return();
+		
 	}
 	
 	public String getName() {
@@ -212,6 +239,37 @@ public class PatientController {
 		this.comments = comments;
 	}
 	
+	public String getRelative() {
+		return relative;
+	}
+
+	public void setRelative(String relative) {
+		this.relative = relative;
+	}
+	
+	public String getLastTreatment() {
+		return this.lastTreatment;
+	}
+
+	public int getDroppedIn(int id, String date) throws RemoteException {
+		PatientStub stub = new PatientStub();
+	
+		
+		PatientStub.GetDroppedIn requestName = new PatientStub.GetDroppedIn();
+		requestName.setId(id);
+		requestName.setDate(date);
+
+		// Invoking the service
+		PatientStub.GetDroppedInResponse responseName = stub.getDroppedIn(requestName);
+		this.DroppedIn=responseName.get_return();
+		
+		return this.DroppedIn;
+	}
+
+	public String getLastTreatmentDate() {
+		return lastTreatmentDate;
+	}
+	
 	//Unit Testing
 	public static void main (String [] args) throws RemoteException{
 		PatientController panais = new PatientController(955555);
@@ -226,9 +284,15 @@ public class PatientController {
 		System.out.println("Treatment: "+panais.getTreatment().toString());
 		System.out.println("Diagnosis: "+panais.getDiagnosis());
 		System.out.println("Comments: "+panais.getComments().toString());
+		System.out.println("Relative: "+panais.getRelative());
+		System.out.println("Last Treatment: "+panais.getLastTreatment());
+		System.out.println("Dropped: "+panais.getDroppedIn(955555, "2015-04-03"));
+		System.out.println("Last Treatment: "+panais.getLastTreatmentDate());
 		
-//		System.out.println(panais.allergies.toString());
 	}
+
+
+
 
 
 

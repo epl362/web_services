@@ -1,21 +1,16 @@
 package UI;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.EventQueue;
 import java.rmi.RemoteException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.ButtonGroup;
-import javax.swing.ButtonModel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
 import javax.swing.JButton;
-import javax.swing.JTable;
+
 
 import DiagnosisCL.DiagnosisController;
 import DrugsCL.DrugController;
@@ -44,9 +39,9 @@ public class EditRecord extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					String date="2015-04-03";
-					String docID="tchara02";
-					EditRecord frame = new EditRecord(955555, date, docID);
+					String date="2015-05-08";
+					String docID="eandre02";
+					EditRecord frame = new EditRecord(977777, date, docID);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,7 +54,7 @@ public class EditRecord extends JFrame {
 	 * Create the frame.
 	 * @throws RemoteException 
 	 */
-	public EditRecord(int id, String docID, String date) throws RemoteException {
+	public EditRecord(int id, String date, String docID) throws RemoteException {
 		DiagnosisController diagnosis = new DiagnosisController();
 		PatientController asthenis = new PatientController(id);
 		
@@ -115,16 +110,19 @@ public class EditRecord extends JFrame {
 		JLabel lblName = new JLabel("");
 		lblName.setBounds(121, 41, 118, 16);
 		panel.add(lblName);
+		//Set Patient's Name
 		lblName.setText(asthenis.getName());
 		
 		JLabel lblSurname = new JLabel("");
 		lblSurname.setBounds(121, 82, 118, 16);
 		panel.add(lblSurname);
+		//Set Patient's Surname
 		lblSurname.setText(asthenis.getSurname());
 		
 		JLabel lblTreatment = new JLabel("");
 		lblTreatment.setBounds(32, 391, 202, 16);
 		panel.add(lblTreatment);
+		//Set Patient's Treatment
 		lblTreatment.setText(asthenis.getTreatment().get(asthenis.getTreatment().size()-1));
 		
 		JLabel lblPreviousTreatments = new JLabel("New Treatment:");
@@ -132,6 +130,12 @@ public class EditRecord extends JFrame {
 		panel.add(lblPreviousTreatments);
 
 		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("id: "+id+" docID "+docID+" date "+date);
+
+			}
+		});
 		btnCancel.setBounds(181, 501, 117, 29);
 		panel.add(btnCancel);
 		
@@ -164,12 +168,10 @@ public class EditRecord extends JFrame {
 		group.add(deadYes);
 		group.add(deadNo);
 		
+		//Set Patient's Deadness
 		deadNo.setSelected(true);
 		
 		
-		//group.setSelected((ButtonModel) deadNo, true);
-		
-//		int [] statuses = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 		
 		String[] statuses = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
 		JComboBox statusCombo = new JComboBox(statuses);
@@ -178,11 +180,22 @@ public class EditRecord extends JFrame {
 		panel.add(statusCombo);
 		
 		int status = asthenis.getStatus();
+		//Set Patient's Status
 		statusCombo.setSelectedIndex(status-1);
 		
 		JComboBox cmbDiagnosis = new JComboBox(diagnosis.getDescription().toArray());
 		cmbDiagnosis.setBounds(109, 170, 130, 27);
 		panel.add(cmbDiagnosis);
+		
+		int diagnosisIndex=0;
+		String currentDiagnosis = asthenis.getDiagnosis();
+		for (int i=0; i<diagnosis.getDescription().size(); i++){
+			if (currentDiagnosis.equals(diagnosis.getDescription().get(i))){
+				diagnosisIndex=i;
+			}
+		}
+		cmbDiagnosis.setSelectedIndex(diagnosisIndex);
+		
 		
 		JRadioButton harmYes = new JRadioButton("Yes");
 		harmYes.setBounds(333, 63, 66, 50);
@@ -205,6 +218,15 @@ public class EditRecord extends JFrame {
 		JComboBox cmbDrugs = new JComboBox(drugs.getDrugs().toArray());
 		cmbDrugs.setBounds(266, 387, 202, 27);
 		panel.add(cmbDrugs);
+		
+		int drugIndex=0;
+		String currentDrug = asthenis.getLastTreatment();
+		for (int i=0; i<drugs.getDrugs().size(); i++){
+			if (currentDrug.equals(drugs.getDrugs().get(i))){
+				drugIndex=i;
+			}
+		}
+		cmbDrugs.setSelectedIndex(drugIndex);
 		
 		
 		txtFldDetails = new JTextField();
@@ -244,7 +266,7 @@ public class EditRecord extends JFrame {
 				String selectedTreatment = (String) cmbDrugs.getSelectedItem();
 				if (asthenis.getAllergies().contains(selectedTreatment)){
 					Object[] options = { "Yes, I don't care", "Oh no!"};
-					int reply = JOptionPane.showOptionDialog(null,
+					JOptionPane.showOptionDialog(null,
 							"The patient is allergic to the prescription you chose. Do you want to continue?", "A Silly Question",
 							JOptionPane.YES_NO_CANCEL_OPTION,
 							JOptionPane.QUESTION_MESSAGE, null, options,
@@ -284,7 +306,7 @@ public class EditRecord extends JFrame {
 						if(harmYes.isSelected()){
 							harmful=1;
 						}
-						String treatment = (String) cmbDrugs.getSelectedItem();
+						
 						int overdose=0;
 						int underdose=0;
 						if (harmful==1){
@@ -295,9 +317,14 @@ public class EditRecord extends JFrame {
 							else{
 								underdose=1;
 							}
+							//details
 						}
-						selectedTreatment = (String) cmbDrugs.getSelectedItem();
-						if (asthenis.getAllergies().contains(selectedTreatment)){
+						else{
+							details="";
+						}
+						
+						String treatment = (String) cmbDrugs.getSelectedItem();
+						if (asthenis.getAllergies().contains(treatment)){
 							ignored=1;
 						}
 						
@@ -306,38 +333,23 @@ public class EditRecord extends JFrame {
 						int index = diagnosis.getDescription().indexOf(diagnosisTest);
 						int diagnosi = diagnosis.getConditionID().get(index);
 						
-						//get treatment
-//						String treatmentText = (String) cmbDrugs.getSelectedItem();
-						//String treatmentText = (String)cmbDrugs.getSelectedItem();
-						
-						
+						//UpdatePatientController
 						patientCL.setDead(dead);
 						patientCL.setStatus((short)status);
 						
+						//UpdateConsultationDoctorController						
 						consultCL.setComment(comment, id, docID, date);
 						consultCL.setDiagnosis(diagnosi, id, docID, date);
 						consultCL.setIgnoredWarnings(ignored, id, docID, date);
-//						consultCL.setTreatment(treatment, id, docID, date);
+						consultCL.setTreatment(treatment, id, docID, date);
 						consultCL.setUpdated(updated, id, docID, date);
 						
+						//UpdateSelfharmfulController
 						self.setDetails(details);
+						self.setHarmful(harmful);
+						self.setOverdose(overdose);
+						self.setUnderdose(underdose);
 						
-						
-						
-//						System.out.println("dead "+dead);
-//						System.out.println("stat "+status);
-//						System.out.println("tre "+treatment);
-						System.out.println("harn "+harmful);
-						System.out.println("over "+overdose);
-						System.out.println("under "+underdose);
-//						System.out.println("det "+details);
-//						System.out.println("com "+comment);
-						System.out.println("ign "+ignored);
-//						System.out.println("upd "+updated);
-						
-						
-						
-						//patientCL.setDead(dead);
 						
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
@@ -353,3 +365,4 @@ public class EditRecord extends JFrame {
 
 	}
 }
+///oh my GOD!! we need to investigate her situation. Her hair are getting worse

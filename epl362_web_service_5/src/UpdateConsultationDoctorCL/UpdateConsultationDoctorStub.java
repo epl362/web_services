@@ -572,7 +572,7 @@
                         */
 
                         
-                                    protected int localTreatmentID ;
+                                    protected java.lang.String localTreatmentID ;
                                 
                            /*  This tracker boolean wil be used to detect whether the user called the set method
                           *   for this attribute. It will be used to determine whether to include this field
@@ -588,9 +588,9 @@
 
                            /**
                            * Auto generated getter method
-                           * @return int
+                           * @return java.lang.String
                            */
-                           public  int getTreatmentID(){
+                           public  java.lang.String getTreatmentID(){
                                return localTreatmentID;
                            }
 
@@ -600,11 +600,8 @@
                                * Auto generated setter method
                                * @param param TreatmentID
                                */
-                               public void setTreatmentID(int param){
-                            
-                                       // setting primitive attribute tracker to true
-                                       localTreatmentIDTracker =
-                                       param != java.lang.Integer.MIN_VALUE;
+                               public void setTreatmentID(java.lang.String param){
+                            localTreatmentIDTracker = true;
                                    
                                             this.localTreatmentID=param;
                                     
@@ -803,13 +800,18 @@
                                     namespace = "http://ClinicalStaff";
                                     writeStartElement(null, namespace, "treatmentID", xmlWriter);
                              
-                                               if (localTreatmentID==java.lang.Integer.MIN_VALUE) {
-                                           
-                                                         throw new org.apache.axis2.databinding.ADBException("treatmentID cannot be null!!");
-                                                      
-                                               } else {
-                                                    xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localTreatmentID));
-                                               }
+
+                                          if (localTreatmentID==null){
+                                              // write the nil attribute
+                                              
+                                                     writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
+                                                  
+                                          }else{
+
+                                        
+                                                   xmlWriter.writeCharacters(localTreatmentID);
+                                            
+                                          }
                                     
                                    xmlWriter.writeEndElement();
                              } if (localIdTracker){
@@ -1050,9 +1052,9 @@
                                       elementList.add(new javax.xml.namespace.QName("http://ClinicalStaff",
                                                                       "treatmentID"));
                                  
-                                elementList.add(
-                                   org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localTreatmentID));
-                            } if (localIdTracker){
+                                         elementList.add(localTreatmentID==null?null:
+                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localTreatmentID));
+                                    } if (localIdTracker){
                                       elementList.add(new javax.xml.namespace.QName("http://ClinicalStaff",
                                                                       "id"));
                                  
@@ -1151,25 +1153,27 @@
                                 
                                     if (reader.isStartElement() && new javax.xml.namespace.QName("http://ClinicalStaff","treatmentID").equals(reader.getName())){
                                 
-                                    nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
-                                    if ("true".equals(nillableValue) || "1".equals(nillableValue)){
-                                        throw new org.apache.axis2.databinding.ADBException("The element: "+"treatmentID" +"  cannot be null");
-                                    }
+                                       nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                       if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
                                     
 
                                     java.lang.String content = reader.getElementText();
                                     
                                               object.setTreatmentID(
-                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToInt(content));
-                                              
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+                                            
+                                       } else {
+                                           
+                                           
+                                           reader.getElementText(); // throw away text nodes if any.
+                                       }
+                                      
                                         reader.next();
                                     
                               }  // End of if for expected property start element
                                 
                                     else {
                                         
-                                               object.setTreatmentID(java.lang.Integer.MIN_VALUE);
-                                           
                                     }
                                 
                                     

@@ -19,7 +19,7 @@ public class UpdatePatientController {
 		
 		UpdatePatientStub stub = new UpdatePatientStub();
 
-		//CONDITION ID
+		//Status
 		// Creating the request
 		UpdatePatientStub.SetStatus requestStatus = new UpdatePatientStub.SetStatus();
 		requestStatus.setId(this.id);
@@ -33,7 +33,7 @@ public class UpdatePatientController {
 		
 		UpdatePatientStub stub = new UpdatePatientStub();
 
-		//CONDITION ID
+		//Dead
 		// Creating the request
 		UpdatePatientStub.SetDead requestDead = new UpdatePatientStub.SetDead();
 		requestDead.setId(this.id);
@@ -42,19 +42,10 @@ public class UpdatePatientController {
 		
 	}
 	
-
-
-	
 	public static void main (String [] args) throws RemoteException{
 		UpdatePatientController pC = new UpdatePatientController(966666);
 		pC.setStatus((short) 3);
 		pC.setDead((short) 1);
-
-//		UpdatePatientController d = new UpdatePatientController();
-//		System.out.println(d.ConditionID.toString());
-//		System.out.println(d.Description.toString());
 	}
-
-
 
 }
