@@ -26,6 +26,8 @@ public class ViewAppointments extends JFrame {
 	private JTextField txtID;
 
 	/**
+	 * TODO how the appointments will be filled here??
+	 * 
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {

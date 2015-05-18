@@ -24,7 +24,6 @@ public class ClinicalStaff {
 		} catch (Exception ex) {
 			System.out.println("ERROR" + ex);
 		}
-		;
 	}
 
 	public static void main(String[] args) {

@@ -69,7 +69,7 @@ INSERT INTO `users` (`Username`, `Password`, `Name`, `Role`, `ClinicID`) VALUES
 ('paziz001', '123123', 'Philippos', 2, 'clinic1'),
 ('dpash01', '234234', 'Jimmys', 3, 'clinic2'),
 ('eandre02', '345345', 'Evanthia', 1, 'clinic1'),
-('mpapae03', '555555', 'm', 1, 'clinic2'),
+('mpapae', '555555', 'Maria', 2, 'clinic2'),
 ('tchara02', '456456', 'Theodoros', 1, 'clinic3'),
 ('tpapak01', '567567', 'Thekla', 1, 'clinic2'),
 ('safxen01', '678678', 'Sotiroula', 3, 'clinic1');

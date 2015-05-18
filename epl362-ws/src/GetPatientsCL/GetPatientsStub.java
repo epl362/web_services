@@ -1,20 +1,20 @@
 
 /**
- * TestStub.java
+ * GetPatientsStub.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:33:49 IST)
  */
-        package merge;
+        package GetPatientsCL;
 
         
 
         /*
-        *  TestStub java implementation
+        *  GetPatientsStub java implementation
         */
 
         
-        public class TestStub extends org.apache.axis2.client.Stub
+        public class GetPatientsStub extends org.apache.axis2.client.Stub
         {
         protected org.apache.axis2.description.AxisOperation[] _operations;
 
@@ -38,7 +38,7 @@
     private void populateAxisService() throws org.apache.axis2.AxisFault {
 
      //creating the Service with a unique name
-     _service = new org.apache.axis2.description.AxisService("Test" + getUniqueSuffix());
+     _service = new org.apache.axis2.description.AxisService("GetPatients" + getUniqueSuffix());
      addAnonymousOperations();
 
         //creating the operations
@@ -49,7 +49,7 @@
                    __operation = new org.apache.axis2.description.OutInAxisOperation();
                 
 
-            __operation.setName(new javax.xml.namespace.QName("http://merge", "testQuery"));
+            __operation.setName(new javax.xml.namespace.QName("http://ClinicalStaff", "getPatients"));
 	    _service.addOperation(__operation);
 	    
 
@@ -61,7 +61,7 @@
                     __operation = new org.apache.axis2.description.OutOnlyAxisOperation();
                 
 
-            __operation.setName(new javax.xml.namespace.QName("http://merge", "main"));
+            __operation.setName(new javax.xml.namespace.QName("http://ClinicalStaff", "main"));
 	    _service.addOperation(__operation);
 	    
 
@@ -83,7 +83,7 @@
       *Constructor that takes in a configContext
       */
 
-    public TestStub(org.apache.axis2.context.ConfigurationContext configurationContext,
+    public GetPatientsStub(org.apache.axis2.context.ConfigurationContext configurationContext,
        java.lang.String targetEndpoint)
        throws org.apache.axis2.AxisFault {
          this(configurationContext,targetEndpoint,false);
@@ -93,7 +93,7 @@
    /**
      * Constructor that takes in a configContext  and useseperate listner
      */
-   public TestStub(org.apache.axis2.context.ConfigurationContext configurationContext,
+   public GetPatientsStub(org.apache.axis2.context.ConfigurationContext configurationContext,
         java.lang.String targetEndpoint, boolean useSeparateListener)
         throws org.apache.axis2.AxisFault {
          //To populate AxisService
@@ -107,31 +107,34 @@
                 targetEndpoint));
         _serviceClient.getOptions().setUseSeparateListener(useSeparateListener);
         
+            //Set the soap version
+            _serviceClient.getOptions().setSoapVersionURI(org.apache.axiom.soap.SOAP12Constants.SOAP_ENVELOPE_NAMESPACE_URI);
+        
     
     }
 
     /**
      * Default Constructor
      */
-    public TestStub(org.apache.axis2.context.ConfigurationContext configurationContext) throws org.apache.axis2.AxisFault {
+    public GetPatientsStub(org.apache.axis2.context.ConfigurationContext configurationContext) throws org.apache.axis2.AxisFault {
         
-                    this(configurationContext,"http://localhost:8080/epl362-ws/services/Test.TestHttpEndpoint/" );
+                    this(configurationContext,"http://localhost:8080/epl362%2Dws/services/GetPatients.GetPatientsHttpSoap12Endpoint/" );
                 
     }
 
     /**
      * Default Constructor
      */
-    public TestStub() throws org.apache.axis2.AxisFault {
+    public GetPatientsStub() throws org.apache.axis2.AxisFault {
         
-                    this("http://localhost:8080/epl362-ws/services/Test.TestHttpEndpoint/" );
+                    this("http://localhost:8080/epl362%2Dws/services/GetPatients.GetPatientsHttpSoap12Endpoint/" );
                 
     }
 
     /**
      * Constructor taking the target endpoint
      */
-    public TestStub(java.lang.String targetEndpoint) throws org.apache.axis2.AxisFault {
+    public GetPatientsStub(java.lang.String targetEndpoint) throws org.apache.axis2.AxisFault {
         this(null,targetEndpoint);
     }
 
@@ -141,16 +144,16 @@
                     /**
                      * Auto generated method signature
                      * 
-                     * @see merge.Test#testQuery
-                     * @param testQuery0
+                     * @see GetPatientsCL.GetPatients#getPatients
+                     * @param getPatients0
                     
                      */
 
                     
 
-                            public  merge.TestStub.TestQueryResponse testQuery(
+                            public  GetPatientsCL.GetPatientsStub.GetPatientsResponse getPatients(
 
-                            merge.TestStub.TestQuery testQuery0)
+                            GetPatientsCL.GetPatientsStub.GetPatients getPatients0)
                         
 
                     throws java.rmi.RemoteException
@@ -159,22 +162,12 @@
               org.apache.axis2.context.MessageContext _messageContext = null;
               try{
                org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[0].getName());
-              _operationClient.getOptions().setAction("\"\"");
+              _operationClient.getOptions().setAction("urn:getPatients");
               _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
               
               
                   addPropertyToOperationClient(_operationClient,org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR,"&");
-              
-                  addPropertyToOperationClient(_operationClient,org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_LOCATION,"testQuery");
-              
-                  addPropertyToOperationClient(_operationClient,org.apache.axis2.Constants.Configuration.ENABLE_REST,true);
-              
-                  addPropertyToOperationClient(_operationClient,org.apache.axis2.Constants.Configuration.HTTP_METHOD,"POST");
-              
-                  addPropertyToOperationClient(_operationClient,org.apache.axis2.Constants.Configuration.CONTENT_TYPE,"application/xml");
-              
-                  addPropertyToOperationClient(_operationClient,org.apache.axis2.Constants.Configuration.MESSAGE_TYPE,"application/xml");
               
 
               // create a message context
@@ -187,10 +180,10 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    testQuery0,
-                                                    optimizeContent(new javax.xml.namespace.QName("http://merge",
-                                                    "testQuery")), new javax.xml.namespace.QName("http://merge",
-                                                    "testQuery"));
+                                                    getPatients0,
+                                                    optimizeContent(new javax.xml.namespace.QName("http://ClinicalStaff",
+                                                    "getPatients")), new javax.xml.namespace.QName("http://ClinicalStaff",
+                                                    "getPatients"));
                                                 
         //adding SOAP soap_headers
          _serviceClient.addHeadersToEnvelope(env);
@@ -211,25 +204,25 @@
                 
                                 java.lang.Object object = fromOM(
                                              _returnEnv.getBody().getFirstElement() ,
-                                             merge.TestStub.TestQueryResponse.class,
+                                             GetPatientsCL.GetPatientsStub.GetPatientsResponse.class,
                                               getEnvelopeNamespaces(_returnEnv));
 
                                
-                                        return (merge.TestStub.TestQueryResponse)object;
+                                        return (GetPatientsCL.GetPatientsStub.GetPatientsResponse)object;
                                    
          }catch(org.apache.axis2.AxisFault f){
 
             org.apache.axiom.om.OMElement faultElt = f.getDetail();
             if (faultElt!=null){
-                if (faultExceptionNameMap.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"testQuery"))){
+                if (faultExceptionNameMap.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getPatients"))){
                     //make the fault by reflection
                     try{
-                        java.lang.String exceptionClassName = (java.lang.String)faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"testQuery"));
+                        java.lang.String exceptionClassName = (java.lang.String)faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getPatients"));
                         java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
                         java.lang.reflect.Constructor constructor = exceptionClass.getConstructor(String.class);
                         java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
                         //message class
-                        java.lang.String messageClassName = (java.lang.String)faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"testQuery"));
+                        java.lang.String messageClassName = (java.lang.String)faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getPatients"));
                         java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
                         java.lang.Object messageObject = fromOM(faultElt,messageClass,null);
                         java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
@@ -273,35 +266,25 @@
                 /**
                 * Auto generated method signature for Asynchronous Invocations
                 * 
-                * @see merge.Test#starttestQuery
-                    * @param testQuery0
+                * @see GetPatientsCL.GetPatients#startgetPatients
+                    * @param getPatients0
                 
                 */
-                public  void starttestQuery(
+                public  void startgetPatients(
 
-                 merge.TestStub.TestQuery testQuery0,
+                 GetPatientsCL.GetPatientsStub.GetPatients getPatients0,
 
-                  final merge.TestCallbackHandler callback)
+                  final GetPatientsCL.GetPatientsCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
               org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[0].getName());
-             _operationClient.getOptions().setAction("\"\"");
+             _operationClient.getOptions().setAction("urn:getPatients");
              _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
               
               
                   addPropertyToOperationClient(_operationClient,org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR,"&");
-              
-                  addPropertyToOperationClient(_operationClient,org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_LOCATION,"testQuery");
-              
-                  addPropertyToOperationClient(_operationClient,org.apache.axis2.Constants.Configuration.ENABLE_REST,true);
-              
-                  addPropertyToOperationClient(_operationClient,org.apache.axis2.Constants.Configuration.HTTP_METHOD,"POST");
-              
-                  addPropertyToOperationClient(_operationClient,org.apache.axis2.Constants.Configuration.CONTENT_TYPE,"application/xml");
-              
-                  addPropertyToOperationClient(_operationClient,org.apache.axis2.Constants.Configuration.MESSAGE_TYPE,"application/xml");
               
 
 
@@ -314,10 +297,10 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    testQuery0,
-                                                    optimizeContent(new javax.xml.namespace.QName("http://merge",
-                                                    "testQuery")), new javax.xml.namespace.QName("http://merge",
-                                                    "testQuery"));
+                                                    getPatients0,
+                                                    optimizeContent(new javax.xml.namespace.QName("http://ClinicalStaff",
+                                                    "getPatients")), new javax.xml.namespace.QName("http://ClinicalStaff",
+                                                    "getPatients"));
                                                 
         // adding SOAP soap_headers
          _serviceClient.addHeadersToEnvelope(env);
@@ -335,13 +318,13 @@
                                 org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
                                 
                                         java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
-                                                                         merge.TestStub.TestQueryResponse.class,
+                                                                         GetPatientsCL.GetPatientsStub.GetPatientsResponse.class,
                                                                          getEnvelopeNamespaces(resultEnv));
-                                        callback.receiveResulttestQuery(
-                                        (merge.TestStub.TestQueryResponse)object);
+                                        callback.receiveResultgetPatients(
+                                        (GetPatientsCL.GetPatientsStub.GetPatientsResponse)object);
                                         
                             } catch (org.apache.axis2.AxisFault e) {
-                                callback.receiveErrortestQuery(e);
+                                callback.receiveErrorgetPatients(e);
                             }
                             }
 
@@ -350,15 +333,15 @@
 									org.apache.axis2.AxisFault f = (org.apache.axis2.AxisFault) error;
 									org.apache.axiom.om.OMElement faultElt = f.getDetail();
 									if (faultElt!=null){
-										if (faultExceptionNameMap.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"testQuery"))){
+										if (faultExceptionNameMap.containsKey(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getPatients"))){
 											//make the fault by reflection
 											try{
-													java.lang.String exceptionClassName = (java.lang.String)faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"testQuery"));
+													java.lang.String exceptionClassName = (java.lang.String)faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getPatients"));
 													java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
 													java.lang.reflect.Constructor constructor = exceptionClass.getConstructor(String.class);
                                                     java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
 													//message class
-													java.lang.String messageClassName = (java.lang.String)faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"testQuery"));
+													java.lang.String messageClassName = (java.lang.String)faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(faultElt.getQName(),"getPatients"));
 														java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
 													java.lang.Object messageObject = fromOM(faultElt,messageClass,null);
 													java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
@@ -366,37 +349,37 @@
 													m.invoke(ex,new java.lang.Object[]{messageObject});
 													
 					
-										            callback.receiveErrortestQuery(new java.rmi.RemoteException(ex.getMessage(), ex));
+										            callback.receiveErrorgetPatients(new java.rmi.RemoteException(ex.getMessage(), ex));
                                             } catch(java.lang.ClassCastException e){
                                                 // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrortestQuery(f);
+                                                callback.receiveErrorgetPatients(f);
                                             } catch (java.lang.ClassNotFoundException e) {
                                                 // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrortestQuery(f);
+                                                callback.receiveErrorgetPatients(f);
                                             } catch (java.lang.NoSuchMethodException e) {
                                                 // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrortestQuery(f);
+                                                callback.receiveErrorgetPatients(f);
                                             } catch (java.lang.reflect.InvocationTargetException e) {
                                                 // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrortestQuery(f);
+                                                callback.receiveErrorgetPatients(f);
                                             } catch (java.lang.IllegalAccessException e) {
                                                 // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrortestQuery(f);
+                                                callback.receiveErrorgetPatients(f);
                                             } catch (java.lang.InstantiationException e) {
                                                 // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrortestQuery(f);
+                                                callback.receiveErrorgetPatients(f);
                                             } catch (org.apache.axis2.AxisFault e) {
                                                 // we cannot intantiate the class - throw the original Axis fault
-                                                callback.receiveErrortestQuery(f);
+                                                callback.receiveErrorgetPatients(f);
                                             }
 									    } else {
-										    callback.receiveErrortestQuery(f);
+										    callback.receiveErrorgetPatients(f);
 									    }
 									} else {
-									    callback.receiveErrortestQuery(f);
+									    callback.receiveErrorgetPatients(f);
 									}
 								} else {
-								    callback.receiveErrortestQuery(error);
+								    callback.receiveErrorgetPatients(error);
 								}
                             }
 
@@ -409,7 +392,7 @@
                                 try {
                                     _messageContext.getTransportOut().getSender().cleanup(_messageContext);
                                 } catch (org.apache.axis2.AxisFault axisFault) {
-                                    callback.receiveErrortestQuery(axisFault);
+                                    callback.receiveErrorgetPatients(axisFault);
                                 }
                             }
                 });
@@ -433,7 +416,7 @@
                   * 
                   */
                 public void  main(
-                 merge.TestStub.Main main2
+                 GetPatientsCL.GetPatientsStub.Main main2
 
                 ) throws java.rmi.RemoteException
                 
@@ -443,22 +426,12 @@
 
                 
                 org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[1].getName());
-                _operationClient.getOptions().setAction("\"\"");
+                _operationClient.getOptions().setAction("urn:main");
                 _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
                 
               
                   addPropertyToOperationClient(_operationClient,org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR,"&");
-              
-                  addPropertyToOperationClient(_operationClient,org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_LOCATION,"main");
-              
-                  addPropertyToOperationClient(_operationClient,org.apache.axis2.Constants.Configuration.ENABLE_REST,true);
-              
-                  addPropertyToOperationClient(_operationClient,org.apache.axis2.Constants.Configuration.HTTP_METHOD,"POST");
-              
-                  addPropertyToOperationClient(_operationClient,org.apache.axis2.Constants.Configuration.CONTENT_TYPE,"application/xml");
-              
-                  addPropertyToOperationClient(_operationClient,org.apache.axis2.Constants.Configuration.MESSAGE_TYPE,"application/xml");
               
                 org.apache.axiom.soap.SOAPEnvelope env = null;
                  _messageContext = new org.apache.axis2.context.MessageContext();
@@ -469,8 +442,8 @@
                                                                     
                                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
                                                                     main2,
-                                                                    optimizeContent(new javax.xml.namespace.QName("http://merge",
-                                                                    "main")),new javax.xml.namespace.QName("http://merge",
+                                                                    optimizeContent(new javax.xml.namespace.QName("http://ClinicalStaff",
+                                                                    "main")),new javax.xml.namespace.QName("http://ClinicalStaff",
                                                                     "main"));
                                                                 
 
@@ -524,7 +497,7 @@
         }
         return false;
     }
-     //http://localhost:8080/epl362-ws/services/Test.TestHttpEndpoint/
+     //http://localhost:8080/epl362%2Dws/services/GetPatients.GetPatientsHttpSoap12Endpoint/
         public static class ExtensionMapper{
 
           public static java.lang.Object getTypeObject(java.lang.String namespaceURI,
@@ -537,12 +510,12 @@
 
         }
     
-        public static class TestQueryResponse
+        public static class GetPatientsResponse
         implements org.apache.axis2.databinding.ADBBean{
         
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
-                "http://merge",
-                "testQueryResponse",
+                "http://ClinicalStaff",
+                "getPatientsResponse",
                 "ns1");
 
             
@@ -634,21 +607,21 @@
                   if (serializeType){
                
 
-                   java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://merge");
+                   java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://ClinicalStaff");
                    if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)){
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           namespacePrefix+":testQueryResponse",
+                           namespacePrefix+":getPatientsResponse",
                            xmlWriter);
                    } else {
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           "testQueryResponse",
+                           "getPatientsResponse",
                            xmlWriter);
                    }
 
                
                    }
                 if (local_returnTracker){
-                                    namespace = "http://merge";
+                                    namespace = "http://ClinicalStaff";
                                     writeStartElement(null, namespace, "return", xmlWriter);
                              
 
@@ -672,7 +645,7 @@
         }
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
-            if(namespace.equals("http://merge")){
+            if(namespace.equals("http://ClinicalStaff")){
                 return "ns1";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
@@ -851,7 +824,7 @@
                  java.util.ArrayList attribList = new java.util.ArrayList();
 
                  if (local_returnTracker){
-                                      elementList.add(new javax.xml.namespace.QName("http://merge",
+                                      elementList.add(new javax.xml.namespace.QName("http://ClinicalStaff",
                                                                       "return"));
                                  
                                          elementList.add(local_return==null?null:
@@ -881,9 +854,9 @@
         * Postcondition: If this object is an element, the reader is positioned at its end element
         *                If this object is a complex type, the reader is positioned at the end element of its outer element
         */
-        public static TestQueryResponse parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
-            TestQueryResponse object =
-                new TestQueryResponse();
+        public static GetPatientsResponse parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
+            GetPatientsResponse object =
+                new GetPatientsResponse();
 
             int event;
             java.lang.String nillableValue = null;
@@ -907,10 +880,10 @@
 
                     java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":")+1);
                     
-                            if (!"testQueryResponse".equals(type)){
+                            if (!"getPatientsResponse".equals(type)){
                                 //find namespace for the prefix
                                 java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-                                return (TestQueryResponse)ExtensionMapper.getTypeObject(
+                                return (GetPatientsResponse)ExtensionMapper.getTypeObject(
                                      nsUri,type,reader);
                               }
                         
@@ -935,7 +908,7 @@
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://merge","return").equals(reader.getName())){
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://ClinicalStaff","return").equals(reader.getName())){
                                 
                                        nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
                                        if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
@@ -984,141 +957,15 @@
         }
            
     
-        public static class TestQuery
+        public static class GetPatients
         implements org.apache.axis2.databinding.ADBBean{
         
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
-                "http://merge",
-                "testQuery",
+                "http://ClinicalStaff",
+                "getPatients",
                 "ns1");
 
             
-
-                        /**
-                        * field for Name
-                        */
-
-                        
-                                    protected java.lang.String localName ;
-                                
-                           /*  This tracker boolean wil be used to detect whether the user called the set method
-                          *   for this attribute. It will be used to determine whether to include this field
-                           *   in the serialized XML
-                           */
-                           protected boolean localNameTracker = false ;
-
-                           public boolean isNameSpecified(){
-                               return localNameTracker;
-                           }
-
-                           
-
-                           /**
-                           * Auto generated getter method
-                           * @return java.lang.String
-                           */
-                           public  java.lang.String getName(){
-                               return localName;
-                           }
-
-                           
-                        
-                            /**
-                               * Auto generated setter method
-                               * @param param Name
-                               */
-                               public void setName(java.lang.String param){
-                            localNameTracker = true;
-                                   
-                                            this.localName=param;
-                                    
-
-                               }
-                            
-
-                        /**
-                        * field for Surname
-                        */
-
-                        
-                                    protected java.lang.String localSurname ;
-                                
-                           /*  This tracker boolean wil be used to detect whether the user called the set method
-                          *   for this attribute. It will be used to determine whether to include this field
-                           *   in the serialized XML
-                           */
-                           protected boolean localSurnameTracker = false ;
-
-                           public boolean isSurnameSpecified(){
-                               return localSurnameTracker;
-                           }
-
-                           
-
-                           /**
-                           * Auto generated getter method
-                           * @return java.lang.String
-                           */
-                           public  java.lang.String getSurname(){
-                               return localSurname;
-                           }
-
-                           
-                        
-                            /**
-                               * Auto generated setter method
-                               * @param param Surname
-                               */
-                               public void setSurname(java.lang.String param){
-                            localSurnameTracker = true;
-                                   
-                                            this.localSurname=param;
-                                    
-
-                               }
-                            
-
-                        /**
-                        * field for ID
-                        */
-
-                        
-                                    protected java.lang.String localID ;
-                                
-                           /*  This tracker boolean wil be used to detect whether the user called the set method
-                          *   for this attribute. It will be used to determine whether to include this field
-                           *   in the serialized XML
-                           */
-                           protected boolean localIDTracker = false ;
-
-                           public boolean isIDSpecified(){
-                               return localIDTracker;
-                           }
-
-                           
-
-                           /**
-                           * Auto generated getter method
-                           * @return java.lang.String
-                           */
-                           public  java.lang.String getID(){
-                               return localID;
-                           }
-
-                           
-                        
-                            /**
-                               * Auto generated setter method
-                               * @param param ID
-                               */
-                               public void setID(java.lang.String param){
-                            localIDTracker = true;
-                                   
-                                            this.localID=param;
-                                    
-
-                               }
-                            
 
      
      
@@ -1165,81 +1012,27 @@
                   if (serializeType){
                
 
-                   java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://merge");
+                   java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://ClinicalStaff");
                    if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)){
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           namespacePrefix+":testQuery",
+                           namespacePrefix+":getPatients",
                            xmlWriter);
                    } else {
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           "testQuery",
+                           "getPatients",
                            xmlWriter);
                    }
 
                
                    }
-                if (localNameTracker){
-                                    namespace = "http://merge";
-                                    writeStartElement(null, namespace, "name", xmlWriter);
-                             
-
-                                          if (localName==null){
-                                              // write the nil attribute
-                                              
-                                                     writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
-                                                  
-                                          }else{
-
-                                        
-                                                   xmlWriter.writeCharacters(localName);
-                                            
-                                          }
-                                    
-                                   xmlWriter.writeEndElement();
-                             } if (localSurnameTracker){
-                                    namespace = "http://merge";
-                                    writeStartElement(null, namespace, "surname", xmlWriter);
-                             
-
-                                          if (localSurname==null){
-                                              // write the nil attribute
-                                              
-                                                     writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
-                                                  
-                                          }else{
-
-                                        
-                                                   xmlWriter.writeCharacters(localSurname);
-                                            
-                                          }
-                                    
-                                   xmlWriter.writeEndElement();
-                             } if (localIDTracker){
-                                    namespace = "http://merge";
-                                    writeStartElement(null, namespace, "ID", xmlWriter);
-                             
-
-                                          if (localID==null){
-                                              // write the nil attribute
-                                              
-                                                     writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
-                                                  
-                                          }else{
-
-                                        
-                                                   xmlWriter.writeCharacters(localID);
-                                            
-                                          }
-                                    
-                                   xmlWriter.writeEndElement();
-                             }
+               
                     xmlWriter.writeEndElement();
                
 
         }
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
-            if(namespace.equals("http://merge")){
+            if(namespace.equals("http://ClinicalStaff")){
                 return "ns1";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
@@ -1417,25 +1210,7 @@
                  java.util.ArrayList elementList = new java.util.ArrayList();
                  java.util.ArrayList attribList = new java.util.ArrayList();
 
-                 if (localNameTracker){
-                                      elementList.add(new javax.xml.namespace.QName("http://merge",
-                                                                      "name"));
-                                 
-                                         elementList.add(localName==null?null:
-                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localName));
-                                    } if (localSurnameTracker){
-                                      elementList.add(new javax.xml.namespace.QName("http://merge",
-                                                                      "surname"));
-                                 
-                                         elementList.add(localSurname==null?null:
-                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localSurname));
-                                    } if (localIDTracker){
-                                      elementList.add(new javax.xml.namespace.QName("http://merge",
-                                                                      "ID"));
-                                 
-                                         elementList.add(localID==null?null:
-                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localID));
-                                    }
+                
 
                 return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
             
@@ -1460,9 +1235,9 @@
         * Postcondition: If this object is an element, the reader is positioned at its end element
         *                If this object is a complex type, the reader is positioned at the end element of its outer element
         */
-        public static TestQuery parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
-            TestQuery object =
-                new TestQuery();
+        public static GetPatients parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
+            GetPatients object =
+                new GetPatients();
 
             int event;
             java.lang.String nillableValue = null;
@@ -1486,10 +1261,10 @@
 
                     java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":")+1);
                     
-                            if (!"testQuery".equals(type)){
+                            if (!"getPatients".equals(type)){
                                 //find namespace for the prefix
                                 java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-                                return (TestQuery)ExtensionMapper.getTypeObject(
+                                return (GetPatients)ExtensionMapper.getTypeObject(
                                      nsUri,type,reader);
                               }
                         
@@ -1510,91 +1285,7 @@
                 
                     
                     reader.next();
-                
-                                    
-                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
-                                
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://merge","name").equals(reader.getName())){
-                                
-                                       nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
-                                       if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
-                                    
-
-                                    java.lang.String content = reader.getElementText();
-                                    
-                                              object.setName(
-                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
-                                            
-                                       } else {
-                                           
-                                           
-                                           reader.getElementText(); // throw away text nodes if any.
-                                       }
-                                      
-                                        reader.next();
-                                    
-                              }  // End of if for expected property start element
-                                
-                                    else {
-                                        
-                                    }
-                                
-                                    
-                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
-                                
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://merge","surname").equals(reader.getName())){
-                                
-                                       nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
-                                       if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
-                                    
-
-                                    java.lang.String content = reader.getElementText();
-                                    
-                                              object.setSurname(
-                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
-                                            
-                                       } else {
-                                           
-                                           
-                                           reader.getElementText(); // throw away text nodes if any.
-                                       }
-                                      
-                                        reader.next();
-                                    
-                              }  // End of if for expected property start element
-                                
-                                    else {
-                                        
-                                    }
-                                
-                                    
-                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
-                                
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://merge","ID").equals(reader.getName())){
-                                
-                                       nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
-                                       if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
-                                    
-
-                                    java.lang.String content = reader.getElementText();
-                                    
-                                              object.setID(
-                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
-                                            
-                                       } else {
-                                           
-                                           
-                                           reader.getElementText(); // throw away text nodes if any.
-                                       }
-                                      
-                                        reader.next();
-                                    
-                              }  // End of if for expected property start element
-                                
-                                    else {
-                                        
-                                    }
-                                  
+                  
                             while (!reader.isStartElement() && !reader.isEndElement())
                                 reader.next();
                             
@@ -1623,7 +1314,7 @@
         implements org.apache.axis2.databinding.ADBBean{
         
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
-                "http://merge",
+                "http://ClinicalStaff",
                 "main",
                 "ns1");
 
@@ -1754,7 +1445,7 @@
                   if (serializeType){
                
 
-                   java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://merge");
+                   java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://ClinicalStaff");
                    if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)){
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
                            namespacePrefix+":main",
@@ -1769,7 +1460,7 @@
                    }
                 if (localArgsTracker){
                              if (localArgs!=null) {
-                                   namespace = "http://merge";
+                                   namespace = "http://ClinicalStaff";
                                    for (int i = 0;i < localArgs.length;i++){
                                         
                                             if (localArgs[i] != null){
@@ -1784,7 +1475,7 @@
                                                 } else {
                                                    
                                                            // write null attribute
-                                                            namespace = "http://merge";
+                                                            namespace = "http://ClinicalStaff";
                                                             writeStartElement(null, namespace, "args", xmlWriter);
                                                             writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
                                                             xmlWriter.writeEndElement();
@@ -1796,7 +1487,7 @@
                                  
                                          // write the null attribute
                                         // write null attribute
-                                           writeStartElement(null, "http://merge", "args", xmlWriter);
+                                           writeStartElement(null, "http://ClinicalStaff", "args", xmlWriter);
 
                                            // write the nil attribute
                                            writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
@@ -1811,7 +1502,7 @@
         }
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
-            if(namespace.equals("http://merge")){
+            if(namespace.equals("http://ClinicalStaff")){
                 return "ns1";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
@@ -1994,13 +1685,13 @@
                                   for (int i = 0;i < localArgs.length;i++){
                                       
                                          if (localArgs[i] != null){
-                                          elementList.add(new javax.xml.namespace.QName("http://merge",
+                                          elementList.add(new javax.xml.namespace.QName("http://ClinicalStaff",
                                                                               "args"));
                                           elementList.add(
                                           org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localArgs[i]));
                                           } else {
                                              
-                                                    elementList.add(new javax.xml.namespace.QName("http://merge",
+                                                    elementList.add(new javax.xml.namespace.QName("http://ClinicalStaff",
                                                                               "args"));
                                                     elementList.add(null);
                                                 
@@ -2010,7 +1701,7 @@
                                   }
                             } else {
                               
-                                    elementList.add(new javax.xml.namespace.QName("http://merge",
+                                    elementList.add(new javax.xml.namespace.QName("http://ClinicalStaff",
                                                                               "args"));
                                     elementList.add(null);
                                 
@@ -2097,7 +1788,7 @@
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://merge","args").equals(reader.getName())){
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://ClinicalStaff","args").equals(reader.getName())){
                                 
                                     
                                     
@@ -2127,7 +1818,7 @@
                                                     //two continuous end elements means we are exiting the xml structure
                                                     loopDone1 = true;
                                                 } else {
-                                                    if (new javax.xml.namespace.QName("http://merge","args").equals(reader.getName())){
+                                                    if (new javax.xml.namespace.QName("http://ClinicalStaff","args").equals(reader.getName())){
                                                          
                                                           nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
                                                           if ("true".equals(nillableValue) || "1".equals(nillableValue)){
@@ -2177,12 +1868,12 @@
         }
            
     
-            private  org.apache.axiom.om.OMElement  toOM(merge.TestStub.TestQuery param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(GetPatientsCL.GetPatientsStub.GetPatients param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(merge.TestStub.TestQuery.MY_QNAME,
+                             return param.getOMElement(GetPatientsCL.GetPatientsStub.GetPatients.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -2191,12 +1882,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(merge.TestStub.TestQueryResponse param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(GetPatientsCL.GetPatientsStub.GetPatientsResponse param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(merge.TestStub.TestQueryResponse.MY_QNAME,
+                             return param.getOMElement(GetPatientsCL.GetPatientsStub.GetPatientsResponse.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -2205,12 +1896,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(merge.TestStub.Main param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(GetPatientsCL.GetPatientsStub.Main param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(merge.TestStub.Main.MY_QNAME,
+                             return param.getOMElement(GetPatientsCL.GetPatientsStub.Main.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -2220,14 +1911,14 @@
             }
         
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, merge.TestStub.TestQuery param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, GetPatientsCL.GetPatientsStub.GetPatients param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(merge.TestStub.TestQuery.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(GetPatientsCL.GetPatientsStub.GetPatients.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -2241,14 +1932,14 @@
 
                              
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, merge.TestStub.Main param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, GetPatientsCL.GetPatientsStub.Main param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(merge.TestStub.Main.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(GetPatientsCL.GetPatientsStub.Main.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -2278,23 +1969,23 @@
 
         try {
         
-                if (merge.TestStub.TestQuery.class.equals(type)){
+                if (GetPatientsCL.GetPatientsStub.GetPatients.class.equals(type)){
                 
-                           return merge.TestStub.TestQuery.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return GetPatientsCL.GetPatientsStub.GetPatients.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (merge.TestStub.TestQueryResponse.class.equals(type)){
+                if (GetPatientsCL.GetPatientsStub.GetPatientsResponse.class.equals(type)){
                 
-                           return merge.TestStub.TestQueryResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return GetPatientsCL.GetPatientsStub.GetPatientsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (merge.TestStub.Main.class.equals(type)){
+                if (GetPatientsCL.GetPatientsStub.Main.class.equals(type)){
                 
-                           return merge.TestStub.Main.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return GetPatientsCL.GetPatientsStub.Main.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }

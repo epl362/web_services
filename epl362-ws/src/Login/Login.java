@@ -45,16 +45,14 @@ public class Login {
 						DB.rs.getString("ClinicID") + "," +
  						DB.rs.getString("cloc") + "," +
 						DB.rs.getString("cname");
-
+				
 				DB.Disconnect();
 				
 				return res;
 			}
-
 		} catch (Exception ex) {
 			System.out.println("ERROR" + ex);
 		}
-		
 		return null;
 	}
 
@@ -66,10 +64,7 @@ public class Login {
 			System.out.println(objA.u);
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
-
 }

@@ -1,8 +1,6 @@
 package ClinicalStaff;
 
 import java.sql.SQLException;
-import java.util.Calendar;
-import java.util.Date;
 
 import Connection.DB;
 
@@ -60,7 +58,7 @@ public class GetAppointments {
 	public String getAppointmentsOfClinitSortedByDate(String clinicID) {
 		String appointments = "";
 		try {
-			String query = "Select `patient`.*, `consultation`.* "
+			String query = "Select `patient`.*, `consultation`.*, `users`.Name as doctorName "
 					+ "from `consultation`, `patient`, `users`"
 					+
 					// Doctor of the consultation is the User
@@ -93,15 +91,9 @@ public class GetAppointments {
 				int pStatus = DB.rs.getInt("Status");
 				boolean pDead = DB.rs.getBoolean("Dead");
 				String pRelative = DB.rs.getString("Relative");
-				
 				String cDocID = DB.rs.getString("DoctorID");
-				
-				// Date TODO use in other file
-//				Calendar cCalendar = Calendar.getInstance();
-//				cCalendar.setTime(DB.rs.getDate("Date"));
-//				cCalendar.set(Calendar.HOUR_OF_DAY, DB.rs.getInt("Time"));
-				
-				
+				String cDocName = DB.rs.getString("doctorName");
+								
 				String cDate = DB.rs.getString("Date");
 				String cHour = DB.rs.getString("Time");
 				
@@ -116,7 +108,7 @@ public class GetAppointments {
 				
 				appointments += pID + "|" + pUser + "|" + pName + "|" +
 						pSurname + "|" + pAddress  + "|" + pStatus + "|" + pDead
-						 + "|" + pRelative + "|" + cDocID  + "|"
+						 + "|" + pRelative + "|" + cDocID  + "|" + cDocName
 						 + "|" + cDate + "|" + cHour  + "|" + cShowedUp
 						 + "|" + cDroppedIn  + "|" +  cUpdated  + "|" + cIgnoredWarnings
 						 + "|" + cDiagnosisID + "|" + cTreatmentID + "|" + cComments
@@ -133,7 +125,7 @@ public class GetAppointments {
 	public static void main(String[] args) {
 		GetAppointments app = new GetAppointments();
 		// String a = app.getAppointmentsByDate("2015-04-03", "tchara02");
-		String a = app.getAppointmentsOfClinitSortedByDate("clinic2");
+		String a = app.getAppointmentsOfClinitSortedByDate("clinic3");
 
 		System.out.println(a);
 	}

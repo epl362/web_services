@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 import ClinicalStaff.Info;
+import Data.Appointment;
 
 public class GetAppointmentsController {
 
@@ -30,7 +31,6 @@ public class GetAppointmentsController {
 		// Invoking the service
 		GetAppointmentsStub.GetAppointmentsByDateResponse response = stub.getAppointmentsByDate(request);
 		this.appointments=response.get_return();
-		
 	}
 	
 	/**
@@ -55,9 +55,24 @@ public class GetAppointmentsController {
 	}
 	
 	
-	
+	/**
+	 * Returns a string with all the appointments
+	 * @return
+	 */
 	public String getAllAppointments(){
 		return this.appointments;
+	}
+	
+	/**
+	 * Returns a table with all appointments
+	 * It parses them, but they must follow a specific format
+	 * (see get clinic appointments sorted by date)
+	 * 
+	 * @return
+	 */
+	public Appointment[] getAppointments(){
+		
+		return Appointment.parseAppointments(this.appointments);
 	}
 	
 

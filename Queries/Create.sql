@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `consultation` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 ALTER TABLE `consultation`
- ADD PRIMARY KEY (`PatientID`, `DoctorID`, `Date`);
+ ADD PRIMARY KEY (`PatientID`, `DoctorID`, `Date`, `Time`);
 
 
 CREATE TABLE IF NOT EXISTS `drugs` (

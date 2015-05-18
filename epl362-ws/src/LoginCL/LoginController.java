@@ -30,7 +30,6 @@ public class LoginController {
 		LoginController a = new LoginController();
 		User user = a.getUser("eandre02", "345345");
 	
-
 		System.out.println(user);
 	}
 }

@@ -100,22 +100,21 @@ public class MainReceptionist extends JFrame {
 		lblTown.setBounds(420, 53, 174, 30);
 		contentPane.add(lblTown);
 		
-		
-		
-		
 		JButton btnBook = new JButton("Book Appointment");
-		btnBook.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnBook.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// Show the interface for the receptionist
+				Book.create(user);
+				frame.setVisible(false);
 			}
 		});
+		
 		btnBook.setBounds(72, 136, 214, 45);
 		contentPane.add(btnBook);
 		
 		JButton btnUpdate = new JButton("Update Appointment");
-		btnUpdate.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		
 		btnUpdate.setBounds(334, 136, 214, 45);
 		contentPane.add(btnUpdate);
 		
@@ -130,10 +129,7 @@ public class MainReceptionist extends JFrame {
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.setFont(new Font("Lucida Grande", Font.BOLD, 15));
 		btnLogout.setBackground(Color.LIGHT_GRAY);
-		btnLogout.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		
 		
 		btnLogout.addMouseListener(new MouseAdapter() {
 			@Override
@@ -142,13 +138,7 @@ public class MainReceptionist extends JFrame {
 				ViewLogin.frame.setVisible(true);
 			}
 		});
-		addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosed(WindowEvent e) {
-				setVisible(false);
-				ViewLogin.frame.setVisible(true);
-			}
-		});
+		
 		
 		btnLogout.setBounds(334, 311, 214, 45);
 		contentPane.add(btnLogout);

@@ -127,8 +127,11 @@ public class ViewLogin extends JFrame {
 						break;
 					}
 				} catch (RemoteException | LoginExceptionException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+
+					JOptionPane.showMessageDialog(null,
+						    "No internet or server is down.",
+						    "Connection failed",
+						    JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});

@@ -3,7 +3,10 @@ package ClinicalStaff;
 
 
 import Connection.DB;
-
+/**
+ * Get a patient by id
+ *
+ */
 public class Patient {
 	
 	public Patient() {
