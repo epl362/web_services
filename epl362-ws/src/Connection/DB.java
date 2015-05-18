@@ -8,12 +8,6 @@ import java.sql.Statement;
 
 
 public class DB {
-
-	// You will have to change these to match your credentials
-	/** Change this with your schema name (psixas_schema?) */
-	public static final String name = "ws362";
-	private static final String username = "root"; 
-	private static final String password = "";
 	
 	public static Statement stmt = null;
 	public static Connection conn = null;
@@ -28,10 +22,12 @@ public class DB {
 
 
 		try {
+			// Do NOT change this. Change the DBCredentials instead
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			String connectionUrl = "jdbc:mysql://localhost:3306/" + name;
-			String connectionUser = username;
-			String connectionPassword = password;
+			String connectionUrl = "jdbc:mysql://localhost:3306/" + DBCredentials.dbname;
+			String connectionUser = DBCredentials.username;
+			String connectionPassword = DBCredentials.password;
+			
 			conn = DriverManager.getConnection(connectionUrl, connectionUser,
 					connectionPassword);
 			stmt = conn.createStatement();
