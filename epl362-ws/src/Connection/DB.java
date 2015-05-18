@@ -10,14 +10,16 @@ import java.sql.Statement;
 public class DB {
 
 	// You will have to change these to match your credentials
-	public static final String name = "ws362"; // psixas_schema ?!
+	/** Change this with your schema name (psixas_schema?) */
+	public static final String name = "ws362";
 	private static final String username = "root"; 
 	private static final String password = "";
 	
 	public static Statement stmt = null;
 	public static Connection conn = null;
 	public static ResultSet rs = null;
-	public static int rc = 0; // row count
+	/** RowCount (used for updates)*/
+	public static int rc = 0;
 
 	/**
 	 * Connect to the database

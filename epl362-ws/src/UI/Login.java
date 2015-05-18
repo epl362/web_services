@@ -13,6 +13,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+import Data.User;
 import LoginCL.LoginController;
 import LoginCL.LoginExceptionException;
 
@@ -28,6 +29,9 @@ public class Login extends JFrame {
 
 	/**
 	 * Launch the application.
+	 * 
+	 * The main entry to the system.
+	 * 
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -91,8 +95,9 @@ public class Login extends JFrame {
 				String username = textUser.getText();
 				String pass = textPass.getText();
 				try {
-					int role = syslogin.getAccess(username, pass);
-					switch(role){
+					User user = syslogin.getUser(username, pass);
+
+					switch(user==null?-1:user.role){
 					case 1: 
 						DatePicker frame;
 						frame = new DatePicker(username);
@@ -116,10 +121,6 @@ public class Login extends JFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-
-
-				
-				
 			}
 		});
 		btnLogin.setBounds(204, 179, 88, 29);

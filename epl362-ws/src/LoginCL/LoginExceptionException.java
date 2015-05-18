@@ -10,7 +10,7 @@ package LoginCL;
 
 public class LoginExceptionException extends java.lang.Exception{
 
-    private static final long serialVersionUID = 1431907738105L;
+    private static final long serialVersionUID = 1431912543296L;
     
     private LoginCL.LoginStub.LoginException faultMessage;
 

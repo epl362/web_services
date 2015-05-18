@@ -7,43 +7,69 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import Connection.DB;
+import Data.Clinic;
+import Data.User;
 
 public class Login {
+	
+	User u=null;
+	Clinic c=null;
 
 	public Login() {
 		DB.Connect();
 	}
 
-
-	public int systemLogin(String Username, String Password) throws Exception {
+	/**
+	 * Get login info
+	 * 
+	 * @param Username
+	 * @param Password
+	 * @throws Exception
+	 */
+	public String systemLogin(String Username, String Password) throws Exception {
 		try {
-			String query = "Select * From `users` where Username=\""+Username+"\" AND Password=\""+Password+"\"";
+			
+			String query = "Select U.*, C.name as cname, C.location as cloc From `users` U,"
+					+ " `clinic` C where Username=\""
+					+ Username + "\" AND Password=\"" + Password + "\""
+					+ " AND U.ClinicID=C.ClinicID";
+			
 			DB.rs = DB.stmt.executeQuery(query);
 
 			if (DB.rs.next()) {
-				int role = DB.rs.getInt("Role");
+				
+				String res="";
+				res+= DB.rs.getString("Name") + "," + 
+						DB.rs.getInt("Role") +  "," + 
+						Username + "," +
+						DB.rs.getString("ClinicID") + "," +
+ 						DB.rs.getString("cloc") + "," +
+						DB.rs.getString("cname");
+
 				DB.Disconnect();
-				return role;
+				
+				return res;
 			}
 
 		} catch (Exception ex) {
 			System.out.println("ERROR" + ex);
-		};
-		return -1;
+		}
+		
+		return null;
 	}
-	
 
-	public static void main(String [] args){
+	public static void main(String[] args) {
 		try {
 			Login objA = new Login();
-			int r = objA.systemLogin("mpapae03", "555555");
-			System.out.println(r);
+			objA.systemLogin("mpapae", "555555");
 			
+			System.out.println(objA.u);
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 }

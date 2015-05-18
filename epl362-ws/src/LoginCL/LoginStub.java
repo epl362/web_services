@@ -541,7 +541,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://Login",
                 "systemLogin",
-                "ns3");
+                "ns2");
 
             
 
@@ -731,7 +731,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://Login")){
-                return "ns3";
+                return "ns2";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -1082,7 +1082,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://Login",
                 "main",
-                "ns3");
+                "ns2");
 
             
 
@@ -1269,7 +1269,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://Login")){
-                return "ns3";
+                return "ns2";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -1639,7 +1639,7 @@
         /* This type was generated from the piece of schema that had
                 name = Exception
                 Namespace URI = http://Login
-                Namespace Prefix = ns3
+                Namespace Prefix = ns2
                 */
             
 
@@ -1769,7 +1769,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://Login")){
-                return "ns3";
+                return "ns2";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -2086,7 +2086,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://Login",
                 "LoginException",
-                "ns3");
+                "ns2");
 
             
 
@@ -2210,7 +2210,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://Login")){
-                return "ns3";
+                return "ns2";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -2535,7 +2535,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://Login",
                 "systemLoginResponse",
-                "ns3");
+                "ns2");
 
             
 
@@ -2544,7 +2544,7 @@
                         */
 
                         
-                                    protected int local_return ;
+                                    protected java.lang.String local_return ;
                                 
                            /*  This tracker boolean wil be used to detect whether the user called the set method
                           *   for this attribute. It will be used to determine whether to include this field
@@ -2560,9 +2560,9 @@
 
                            /**
                            * Auto generated getter method
-                           * @return int
+                           * @return java.lang.String
                            */
-                           public  int get_return(){
+                           public  java.lang.String get_return(){
                                return local_return;
                            }
 
@@ -2572,11 +2572,8 @@
                                * Auto generated setter method
                                * @param param _return
                                */
-                               public void set_return(int param){
-                            
-                                       // setting primitive attribute tracker to true
-                                       local_returnTracker =
-                                       param != java.lang.Integer.MIN_VALUE;
+                               public void set_return(java.lang.String param){
+                            local_returnTracker = true;
                                    
                                             this.local_return=param;
                                     
@@ -2646,13 +2643,18 @@
                                     namespace = "http://Login";
                                     writeStartElement(null, namespace, "return", xmlWriter);
                              
-                                               if (local_return==java.lang.Integer.MIN_VALUE) {
-                                           
-                                                         throw new org.apache.axis2.databinding.ADBException("return cannot be null!!");
-                                                      
-                                               } else {
-                                                    xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(local_return));
-                                               }
+
+                                          if (local_return==null){
+                                              // write the nil attribute
+                                              
+                                                     writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
+                                                  
+                                          }else{
+
+                                        
+                                                   xmlWriter.writeCharacters(local_return);
+                                            
+                                          }
                                     
                                    xmlWriter.writeEndElement();
                              }
@@ -2663,7 +2665,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://Login")){
-                return "ns3";
+                return "ns2";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -2844,9 +2846,9 @@
                                       elementList.add(new javax.xml.namespace.QName("http://Login",
                                                                       "return"));
                                  
-                                elementList.add(
-                                   org.apache.axis2.databinding.utils.ConverterUtil.convertToString(local_return));
-                            }
+                                         elementList.add(local_return==null?null:
+                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(local_return));
+                                    }
 
                 return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
             
@@ -2927,25 +2929,27 @@
                                 
                                     if (reader.isStartElement() && new javax.xml.namespace.QName("http://Login","return").equals(reader.getName())){
                                 
-                                    nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
-                                    if ("true".equals(nillableValue) || "1".equals(nillableValue)){
-                                        throw new org.apache.axis2.databinding.ADBException("The element: "+"return" +"  cannot be null");
-                                    }
+                                       nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                       if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
                                     
 
                                     java.lang.String content = reader.getElementText();
                                     
                                               object.set_return(
-                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToInt(content));
-                                              
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+                                            
+                                       } else {
+                                           
+                                           
+                                           reader.getElementText(); // throw away text nodes if any.
+                                       }
+                                      
                                         reader.next();
                                     
                               }  // End of if for expected property start element
                                 
                                     else {
                                         
-                                               object.set_return(java.lang.Integer.MIN_VALUE);
-                                           
                                     }
                                   
                             while (!reader.isStartElement() && !reader.isEndElement())
