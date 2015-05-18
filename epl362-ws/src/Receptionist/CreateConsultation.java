@@ -20,6 +20,8 @@ public class CreateConsultation {
 		DB.Connect();
 	}
 	
+	
+
 	public void insertConsultation(int id,String docId,String date,int time){
 		this.id = id;
 		this.docId = docId;
@@ -28,7 +30,7 @@ public class CreateConsultation {
 		
 		try {
 			String query="INSERT INTO `consultation` (`PatientID`, `DoctorID`, `Date`, `Time`, `ShowedUp`, `DroppedIn`, `Updated`, `IgnoredWarnings`, `DiagnosisID`, `TreatmentID`, `Comments`) VALUES ("+this.id+", '"+this.docId+"', '"+this.date+"', "+this.time+" , null, null, null, null, null, null, null)";
-			DB.rc =DB.stmt.executeUpdate(query);
+			DB.rc = DB.stmt.executeUpdate(query);
 			
 			DB.Disconnect();
 
@@ -39,7 +41,8 @@ public class CreateConsultation {
 	
 	public static void main(String[] args) {
 		CreateConsultation randevouz = new CreateConsultation();
-		randevouz.insertConsultation(966666, "tpapak01", "2015-04-06", 14);
+		randevouz.insertConsultation(999999, "eandre02", "2015-05-18", 11);
+
 	}
 
 }

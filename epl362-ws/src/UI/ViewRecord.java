@@ -29,9 +29,9 @@ public class ViewRecord extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					String date="2015-04-03";
-					String docID="tchara02";
-					ViewRecord frame = new ViewRecord(955555, date, docID);
+					String date="2015-05-21";
+					String docID="tpapak01";
+					ViewRecord frame = new ViewRecord(966666, docID, date);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,7 +48,7 @@ public class ViewRecord extends JFrame {
 		PatientController asthenis = new PatientController(id);
 		
 		setTitle("Patient's Record");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 551, 510);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -133,7 +133,7 @@ public class ViewRecord extends JFrame {
 		panel.add(lblDetails);
 		
 		JLabel lblTreatment = new JLabel("");
-		lblTreatment.setBounds(266, 248, 187, 16);
+		lblTreatment.setBounds(266, 248, 93, 16);
 		panel.add(lblTreatment);
 		
 		JLabel lblPreviousTreatments = new JLabel("Previous Treatments:");
@@ -162,12 +162,13 @@ public class ViewRecord extends JFrame {
 				
 			}
 		});
-		btnConsultation.setBounds(161, 441, 117, 29);
-		
+		btnConsultation.setBounds(178, 441, 125, 29);
+		panel.add(btnConsultation);
 		//OVER HERE
-		if (asthenis.getDead()==0){
-			panel.add(btnConsultation);
-		}
+//		if (asthenis.getDead()==0){
+//			panel.add(btnConsultation);
+//		}
+		
 		
 		
 		lblName.setText(asthenis.getName());
@@ -178,7 +179,8 @@ public class ViewRecord extends JFrame {
 		lblReason.setText(asthenis.getReason());
 		lblDetails.setText(asthenis.getDetails());
 		lblDiagnosis.setText(asthenis.getDiagnosis());
-		lblTreatment.setText(asthenis.getTreatment().get(asthenis.getTreatment().size()-1));
+		lblTreatment.setText(asthenis.getLastTreatment());
+		
 		
 		JButton btnComments = new JButton("Comments");
 		btnComments.addActionListener(new ActionListener() {
@@ -187,7 +189,7 @@ public class ViewRecord extends JFrame {
 				vc.setVisible(true);
 			}
 		});
-		btnComments.setBounds(32, 441, 117, 29);
+		btnComments.setBounds(32, 441, 137, 29);
 		panel.add(btnComments);
 		
 		
@@ -208,7 +210,7 @@ public class ViewRecord extends JFrame {
 		
 		String [] headerTreatment=new String []{"Treatment"};
 		modelTreatment.setColumnIdentifiers(headerTreatment);
-		for (int i=0; i<asthenis.getTreatment().size()-1; i++){
+		for (int i=0; i<asthenis.getTreatment().size(); i++){
 			modelTreatment.addRow(new Object[]{asthenis.getTreatment().get(i)});
 		}
 		
@@ -227,6 +229,22 @@ public class ViewRecord extends JFrame {
 		});
 		btnViewSideEffects.setBounds(32, 400, 137, 29);
 		panel.add(btnViewSideEffects);
+		
+		JLabel lblOnDate = new JLabel("on date");
+		lblOnDate.setBounds(371, 248, 55, 16);
+		
+		JLabel lblDate = new JLabel("");
+		lblDate.setBounds(438, 248, 95, 16);
+		
+		if (asthenis.getDroppedIn(id, date)==1){
+
+			panel.add(lblOnDate);
+			
+
+			panel.add(lblDate);
+			lblDate.setText(asthenis.getLastTreatmentDate());
+		}
+
 
 	
 

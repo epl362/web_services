@@ -127,7 +127,7 @@
      */
     public UpdatePatientStub(org.apache.axis2.context.ConfigurationContext configurationContext) throws org.apache.axis2.AxisFault {
         
-                    this(configurationContext,"http://localhost:8080/epl362-ws/services/UpdatePatient.UpdatePatientHttpEndpoint/" );
+                    this(configurationContext,"http://localhost:8080/epl362%2Dws/services/UpdatePatient.UpdatePatientHttpEndpoint/" );
                 
     }
 
@@ -136,7 +136,7 @@
      */
     public UpdatePatientStub() throws org.apache.axis2.AxisFault {
         
-                    this("http://localhost:8080/epl362-ws/services/UpdatePatient.UpdatePatientHttpEndpoint/" );
+                    this("http://localhost:8080/epl362%2Dws/services/UpdatePatient.UpdatePatientHttpEndpoint/" );
                 
     }
 
@@ -379,7 +379,7 @@
         }
         return false;
     }
-     //http://localhost:8080/epl362-ws/services/UpdatePatient.UpdatePatientHttpEndpoint/
+     //http://localhost:8080/epl362%2Dws/services/UpdatePatient.UpdatePatientHttpEndpoint/
         public static class ExtensionMapper{
 
           public static java.lang.Object getTypeObject(java.lang.String namespaceURI,
@@ -398,7 +398,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://ClinicalStaff",
                 "setDead",
-                "ns2");
+                "ns1");
 
             
 
@@ -584,7 +584,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://ClinicalStaff")){
-                return "ns2";
+                return "ns1";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -931,7 +931,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://ClinicalStaff",
                 "setStatus",
-                "ns2");
+                "ns1");
 
             
 
@@ -1117,7 +1117,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://ClinicalStaff")){
-                return "ns2";
+                return "ns1";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -1464,7 +1464,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://ClinicalStaff",
                 "main",
-                "ns2");
+                "ns1");
 
             
 
@@ -1651,7 +1651,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://ClinicalStaff")){
-                return "ns2";
+                return "ns1";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }

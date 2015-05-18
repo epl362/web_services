@@ -1,6 +1,6 @@
 package UI;
 
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 import java.rmi.RemoteException;
 import java.util.StringTokenizer;
@@ -16,7 +16,6 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 import GetAppointmentsCL.GetAppointmentsController;
-import PatientCL.PatientController;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -33,7 +32,9 @@ public class ViewAppointments extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ViewAppointments frame = new ViewAppointments();
+					String date="2015-04-02";
+					String docID="tpapak01";
+					ViewAppointments frame = new ViewAppointments(docID, date);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,9 +47,8 @@ public class ViewAppointments extends JFrame {
 	 * Create the frame.
 	 * @throws RemoteException 
 	 */
-	public ViewAppointments() throws RemoteException {
-		String date="2015-04-03";
-		String docID="tchara02";
+	public ViewAppointments(String docID, String date) throws RemoteException {
+
 		GetAppointmentsController app = new GetAppointmentsController(date, docID);
 		
 		setTitle("Appointments");
@@ -86,9 +86,12 @@ public class ViewAppointments extends JFrame {
 			String surname = attributes.nextToken();
 			int time = Integer.parseInt(attributes.nextToken());
 			int droppedIn = Integer.parseInt(attributes.nextToken());
+			int updated = Integer.parseInt(attributes.nextToken());
 			int id = Integer.parseInt(attributes.nextToken());
-			model.addRow(new Object[]{i, id, name, surname, time, droppedIn});
-			i++;
+			if(updated==0){
+				model.addRow(new Object[]{i, id, name, surname, time, droppedIn});
+				i++;
+			}
 			}
 
 		

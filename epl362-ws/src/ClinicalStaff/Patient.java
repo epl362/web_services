@@ -10,6 +10,7 @@ public class Patient {
 		DB.Connect();
 	}
 	
+
 	
 	public String getName(int id) {
 		try {
@@ -19,7 +20,7 @@ public class Patient {
 
 			if (DB.rs.next()) {
 				String name = DB.rs.getString("Name");
-				DB.Disconnect();
+				DB.Disconnect();;
 				return name;
 			}
 		} catch (Exception ex) {
@@ -37,7 +38,7 @@ public class Patient {
 
 			if (DB.rs.next()) {
 				String surname = DB.rs.getString("Surname");
-				DB.Disconnect();
+				DB.Disconnect();;
 				return surname;
 			}
 		} catch (Exception ex) {
@@ -55,7 +56,7 @@ public class Patient {
 
 			if (DB.rs.next()) {
 				short status = DB.rs.getShort("Status");
-				DB.Disconnect();
+				DB.Disconnect();;
 				return status;
 			}
 		} catch (Exception ex) {
@@ -72,7 +73,7 @@ public class Patient {
 
 			if (DB.rs.next()) {
 				short dead = DB.rs.getShort("Dead");
-				DB.Disconnect();
+				DB.Disconnect();;
 				return dead;
 			}
 		} catch (Exception ex) {
@@ -89,7 +90,7 @@ public class Patient {
 
 			if (DB.rs.next()) {
 				short isHarmful = DB.rs.getShort("isHarmful");
-				DB.Disconnect();
+				DB.Disconnect();;
 				return isHarmful;
 			}
 		} catch (Exception ex) {
@@ -118,7 +119,7 @@ public class Patient {
 				reason="The patient didn't hurt himself.";
 				}
 			}
-			DB.Disconnect();
+			DB.Disconnect();;
 			return reason;
 		} catch (Exception ex) {
 			System.out.println("ERROR" + ex);
@@ -136,7 +137,7 @@ public class Patient {
 				String allergy = DB.rs.getString("AllergiesName");
 				allergies+=allergy+"/";
 			}
-			DB.Disconnect();
+			DB.Disconnect();;
 			return allergies;
 		} catch (Exception ex) {
 			System.out.println("ERROR" + ex);
@@ -159,7 +160,7 @@ public class Patient {
 					details = "No details.";
 					}
 				}
-				DB.Disconnect();
+				DB.Disconnect();;
 				return details;
 			} catch (Exception ex) {
 				System.out.println("ERROR" + ex);
@@ -177,8 +178,25 @@ public class Patient {
 				String drug = DB.rs.getString("TreatmentID");
 				treatment+=drug+"/";
 			}
-			DB.Disconnect();
+			DB.Disconnect();;
 			return treatment;
+		} catch (Exception ex) {
+			System.out.println("ERROR" + ex);
+		};
+		return "";
+	}
+	
+	public String getLastTreatment(int id) {
+		String treat="";
+		try {
+			
+			String query="SELECT `consultation`.TreatmentID, `condition`.Description FROM `consultation`, `condition` WHERE `consultation`.PatientID = "+id+" and `condition`.DiagnosisID=`consultation`.DiagnosisID and `consultation`.Date IN (SELECT max(`consultation`.Date) FROM `consultation` WHERE `consultation`.PatientID = "+id+" and `consultation`.Date < CURDATE() and ShowedUp = 1 and Updated = 1 )";
+			DB.rs = DB.stmt.executeQuery(query);
+			if (DB.rs.next()) {
+				treat = DB.rs.getString("TreatmentID");
+			}
+			DB.Disconnect();
+			return treat;
 		} catch (Exception ex) {
 			System.out.println("ERROR" + ex);
 		};
@@ -188,7 +206,8 @@ public class Patient {
 	public String getDiagnosis(int id) {
 		String diagnosis="";
 		try {
-			String query="Select `consultation`.PatientID, `condition`.Description FROM `condition`, `consultation` where `consultation`.PatientID="+id+" and `condition`.DiagnosisID=`consultation`.DiagnosisID";
+			
+			String query="SELECT `consultation`.TreatmentID, `condition`.Description FROM `consultation`, `condition` WHERE `consultation`.PatientID = "+id+" and `condition`.DiagnosisID=`consultation`.DiagnosisID and `consultation`.Date IN (SELECT max(`consultation`.Date) FROM `consultation` WHERE `consultation`.PatientID = "+id+" and `consultation`.Date < CURDATE() and ShowedUp = 1 and Updated = 1 )";
 			DB.rs = DB.stmt.executeQuery(query);
 			while (DB.rs.next()) {
 				diagnosis = DB.rs.getString("Description");
@@ -219,58 +238,87 @@ public class Patient {
 		return "";
 	}
 	
+	public String getRelative(int id) {
+		
+		try {
+			String query = "SELECT `patient`.Relative FROM `patient` where PatientID="+id+"";
+			DB.rs = DB.stmt.executeQuery(query);
+
+			if (DB.rs.next()) {
+				String email = DB.rs.getString("Relative");
+				DB.Disconnect();
+				return email;
+			}
+			
+		} catch (Exception ex) {
+			System.out.println("ERROR" + ex);
+		};
+		return "";
+	}
 	
-//	public void setName(String name) {
-//		this.name = name;
-//	}
-//
-//	public void setSurname(String surname) {
-//		this.surname = surname;
-//	}
-//
-//	public void setStatus(short status) {
-//		this.status = status;
-//	}
-//
-//	public void setDead(short dead) {
-//		this.dead = dead;
-//	}
-//
-//	public void setIsHarmful(short isHarmful) {
-//		this.isHarmful = isHarmful;
-//	}
-//
-//	public void setReason(String reason) {
-//		this.reason = reason;
-//	}
-//
-//	public void setDetails(String details) {
-//		this.details = details;
-//	}
-//
-//	public void setAllergies(ArrayList <String> allergies) {
-//		this.allergies = allergies;
-//	}
-//
-//	public void setTreatment(ArrayList <String> treatment) {
-//		this.treatment = treatment;
-//	}
-//	
-//
-//
-//	public void setDiagnosis(String diagnosis) {
-//		this.diagnosis = diagnosis;
-//	}
+
+	public int getDroppedIn(int id, String date) {
+		
+		try {
+			String query = "SELECT `consultation`.DroppedIn, `consultation`.Updated FROM `consultation` WHERE `consultation`.PatientID="+id+" and `consultation`.Date='"+date+"'";
+			DB.rs = DB.stmt.executeQuery(query);
+
+			if (DB.rs.next()) {
+				int dropped = DB.rs.getInt("DroppedIn");
+				DB.Disconnect();
+				return dropped;
+			}
+			
+		} catch (Exception ex) {
+			System.out.println("ERROR" + ex);
+		};
+		return -1;
+	}
 	
-	//Select `consultation`.Comments from `consultation` Where `consultation`.PatientID="955555";
+	public String getLastTreatmentDate(int id) {
+		String date="";
+		try {
+			
+			String query="SELECT `consultation`.TreatmentID, `condition`.Description, `consultation`.Date FROM `consultation`, `condition` WHERE `consultation`.PatientID = "+id+" and `condition`.DiagnosisID=`consultation`.DiagnosisID and `consultation`.Date IN (SELECT max(`consultation`.Date) FROM `consultation` WHERE `consultation`.PatientID = "+id+" and `consultation`.Date < CURDATE() and ShowedUp = 1 and Updated = 1 )";
+			DB.rs = DB.stmt.executeQuery(query);
+			if (DB.rs.next()) {
+				date = DB.rs.getString("Date");
+			}
+			DB.Disconnect();
+			return date;
+		} catch (Exception ex) {
+			System.out.println("ERROR" + ex);
+		};
+		return "";
+	}
 	
+	//Unused
+	public int getUpdated(int id, String date) {
+		
+		try {
+			String query = "SELECT `consultation`.DroppedIn, `consultation`.Updated FROM `consultation` WHERE `consultation`.PatientID="+id+" and `consultation`.Date='"+date+"'";
+			DB.rs = DB.stmt.executeQuery(query);
+
+			if (DB.rs.next()) {
+				int up = DB.rs.getInt("Updated");
+				DB.Disconnect();
+				return up;
+			}
+			
+		} catch (Exception ex) {
+			System.out.println("ERROR" + ex);
+		};
+		return -1;
+	}
+	
+	//http://localhost:8080/epl362_web_service_5/services/Patient?wsdl
 	//Unit Testing
 	public static void main (String [] args){
 		Patient panais = new Patient();
-		System.out.println(panais.getDiagnosis(955555));
-		
+		System.out.println(panais.getLastTreatmentDate(966666));
 	}
 
+	
 	
 	
 }

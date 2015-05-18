@@ -386,7 +386,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://Receptionist",
                 "main",
-                "ns3");
+                "ns2");
 
             
 
@@ -573,7 +573,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://Receptionist")){
-                return "ns3";
+                return "ns2";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -956,7 +956,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://Receptionist",
                 "setShowedUp",
-                "ns3");
+                "ns2");
 
             
 
@@ -1262,7 +1262,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://Receptionist")){
-                return "ns3";
+                return "ns2";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -1677,7 +1677,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://Receptionist",
                 "setDroppedIn",
-                "ns3");
+                "ns2");
 
             
 
@@ -1983,7 +1983,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://Receptionist")){
-                return "ns3";
+                return "ns2";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }

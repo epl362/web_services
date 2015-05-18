@@ -97,7 +97,7 @@
                     __operation = new org.apache.axis2.description.OutOnlyAxisOperation();
                 
 
-            __operation.setName(new javax.xml.namespace.QName("http://ClinicalStaff", "setUpdated"));
+            __operation.setName(new javax.xml.namespace.QName("http://ClinicalStaff", "setTreatment"));
 	    _service.addOperation(__operation);
 	    
 
@@ -109,7 +109,7 @@
                     __operation = new org.apache.axis2.description.OutOnlyAxisOperation();
                 
 
-            __operation.setName(new javax.xml.namespace.QName("http://ClinicalStaff", "setTreatment"));
+            __operation.setName(new javax.xml.namespace.QName("http://ClinicalStaff", "setUpdated"));
 	    _service.addOperation(__operation);
 	    
 
@@ -418,8 +418,8 @@
                   * Auto generated method signature
                   * 
                   */
-                public void  setUpdated(
-                 UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetUpdated setUpdated4
+                public void  setTreatment(
+                 UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetTreatment setTreatment4
 
                 ) throws java.rmi.RemoteException
                 
@@ -429,7 +429,7 @@
 
                 
                 org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[4].getName());
-                _operationClient.getOptions().setAction("urn:setUpdated");
+                _operationClient.getOptions().setAction("urn:setTreatment");
                 _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
                 
@@ -444,10 +444,10 @@
                                                     
                                                                     
                                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                                    setUpdated4,
+                                                                    setTreatment4,
                                                                     optimizeContent(new javax.xml.namespace.QName("http://ClinicalStaff",
-                                                                    "setUpdated")),new javax.xml.namespace.QName("http://ClinicalStaff",
-                                                                    "setUpdated"));
+                                                                    "setTreatment")),new javax.xml.namespace.QName("http://ClinicalStaff",
+                                                                    "setTreatment"));
                                                                 
 
               //adding SOAP soap_headers
@@ -474,8 +474,8 @@
                   * Auto generated method signature
                   * 
                   */
-                public void  setTreatment(
-                 UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetTreatment setTreatment5
+                public void  setUpdated(
+                 UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetUpdated setUpdated5
 
                 ) throws java.rmi.RemoteException
                 
@@ -485,7 +485,7 @@
 
                 
                 org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[5].getName());
-                _operationClient.getOptions().setAction("urn:setTreatment");
+                _operationClient.getOptions().setAction("urn:setUpdated");
                 _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
                 
@@ -500,10 +500,10 @@
                                                     
                                                                     
                                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                                    setTreatment5,
+                                                                    setUpdated5,
                                                                     optimizeContent(new javax.xml.namespace.QName("http://ClinicalStaff",
-                                                                    "setTreatment")),new javax.xml.namespace.QName("http://ClinicalStaff",
-                                                                    "setTreatment"));
+                                                                    "setUpdated")),new javax.xml.namespace.QName("http://ClinicalStaff",
+                                                                    "setUpdated"));
                                                                 
 
               //adding SOAP soap_headers
@@ -563,7 +563,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://ClinicalStaff",
                 "setTreatment",
-                "ns2");
+                "ns1");
 
             
 
@@ -572,7 +572,7 @@
                         */
 
                         
-                                    protected int localTreatmentID ;
+                                    protected java.lang.String localTreatmentID ;
                                 
                            /*  This tracker boolean wil be used to detect whether the user called the set method
                           *   for this attribute. It will be used to determine whether to include this field
@@ -588,9 +588,9 @@
 
                            /**
                            * Auto generated getter method
-                           * @return int
+                           * @return java.lang.String
                            */
-                           public  int getTreatmentID(){
+                           public  java.lang.String getTreatmentID(){
                                return localTreatmentID;
                            }
 
@@ -600,11 +600,8 @@
                                * Auto generated setter method
                                * @param param TreatmentID
                                */
-                               public void setTreatmentID(int param){
-                            
-                                       // setting primitive attribute tracker to true
-                                       localTreatmentIDTracker =
-                                       param != java.lang.Integer.MIN_VALUE;
+                               public void setTreatmentID(java.lang.String param){
+                            localTreatmentIDTracker = true;
                                    
                                             this.localTreatmentID=param;
                                     
@@ -803,13 +800,18 @@
                                     namespace = "http://ClinicalStaff";
                                     writeStartElement(null, namespace, "treatmentID", xmlWriter);
                              
-                                               if (localTreatmentID==java.lang.Integer.MIN_VALUE) {
-                                           
-                                                         throw new org.apache.axis2.databinding.ADBException("treatmentID cannot be null!!");
-                                                      
-                                               } else {
-                                                    xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localTreatmentID));
-                                               }
+
+                                          if (localTreatmentID==null){
+                                              // write the nil attribute
+                                              
+                                                     writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
+                                                  
+                                          }else{
+
+                                        
+                                                   xmlWriter.writeCharacters(localTreatmentID);
+                                            
+                                          }
                                     
                                    xmlWriter.writeEndElement();
                              } if (localIdTracker){
@@ -869,7 +871,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://ClinicalStaff")){
-                return "ns2";
+                return "ns1";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -1050,9 +1052,9 @@
                                       elementList.add(new javax.xml.namespace.QName("http://ClinicalStaff",
                                                                       "treatmentID"));
                                  
-                                elementList.add(
-                                   org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localTreatmentID));
-                            } if (localIdTracker){
+                                         elementList.add(localTreatmentID==null?null:
+                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localTreatmentID));
+                                    } if (localIdTracker){
                                       elementList.add(new javax.xml.namespace.QName("http://ClinicalStaff",
                                                                       "id"));
                                  
@@ -1151,25 +1153,27 @@
                                 
                                     if (reader.isStartElement() && new javax.xml.namespace.QName("http://ClinicalStaff","treatmentID").equals(reader.getName())){
                                 
-                                    nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
-                                    if ("true".equals(nillableValue) || "1".equals(nillableValue)){
-                                        throw new org.apache.axis2.databinding.ADBException("The element: "+"treatmentID" +"  cannot be null");
-                                    }
+                                       nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                       if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
                                     
 
                                     java.lang.String content = reader.getElementText();
                                     
                                               object.setTreatmentID(
-                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToInt(content));
-                                              
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+                                            
+                                       } else {
+                                           
+                                           
+                                           reader.getElementText(); // throw away text nodes if any.
+                                       }
+                                      
                                         reader.next();
                                     
                               }  // End of if for expected property start element
                                 
                                     else {
                                         
-                                               object.setTreatmentID(java.lang.Integer.MIN_VALUE);
-                                           
                                     }
                                 
                                     
@@ -1284,7 +1288,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://ClinicalStaff",
                 "setIgnoredWarnings",
-                "ns2");
+                "ns1");
 
             
 
@@ -1590,7 +1594,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://ClinicalStaff")){
-                return "ns2";
+                return "ns1";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -2017,7 +2021,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://ClinicalStaff",
                 "setDiagnosis",
-                "ns2");
+                "ns1");
 
             
 
@@ -2323,7 +2327,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://ClinicalStaff")){
-                return "ns2";
+                return "ns1";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -2738,7 +2742,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://ClinicalStaff",
                 "setComment",
-                "ns2");
+                "ns1");
 
             
 
@@ -3046,7 +3050,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://ClinicalStaff")){
-                return "ns2";
+                return "ns1";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -3463,7 +3467,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://ClinicalStaff",
                 "setUpdated",
-                "ns2");
+                "ns1");
 
             
 
@@ -3769,7 +3773,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://ClinicalStaff")){
-                return "ns2";
+                return "ns1";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -4184,7 +4188,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://ClinicalStaff",
                 "main",
-                "ns2");
+                "ns1");
 
             
 
@@ -4371,7 +4375,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://ClinicalStaff")){
-                return "ns2";
+                return "ns1";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -4792,12 +4796,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetUpdated param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetTreatment param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetUpdated.MY_QNAME,
+                             return param.getOMElement(UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetTreatment.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -4806,12 +4810,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetTreatment param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetUpdated param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetTreatment.MY_QNAME,
+                             return param.getOMElement(UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetUpdated.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -4905,14 +4909,14 @@
 
                              
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetUpdated param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetTreatment param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetUpdated.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetTreatment.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -4926,14 +4930,14 @@
 
                              
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetTreatment param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetUpdated param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetTreatment.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetUpdated.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -4991,16 +4995,16 @@
 
                 }
            
-                if (UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetUpdated.class.equals(type)){
+                if (UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetTreatment.class.equals(type)){
                 
-                           return UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetUpdated.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetTreatment.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetTreatment.class.equals(type)){
+                if (UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetUpdated.class.equals(type)){
                 
-                           return UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetTreatment.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return UpdateConsultationDoctorCL.UpdateConsultationDoctorStub.SetUpdated.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }

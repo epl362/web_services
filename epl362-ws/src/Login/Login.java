@@ -9,65 +9,41 @@ import java.sql.Statement;
 import Connection.DB;
 
 public class Login {
-	ResultSet resSet = null;
 
 	public Login() {
 		DB.Connect();
 	}
 
-	public boolean getAccess(String Username) throws Exception {
 
+	public int systemLogin(String Username, String Password) throws Exception {
 		try {
-			String query = "Select * From users";
-			resSet = DB.stmt.executeQuery(query);
-			while (resSet.next()) {
-				String name = resSet.getString("Password");
-				// System.out.println(name);
-				return true;
+			String query = "Select * From `users` where Username=\""+Username+"\" AND Password=\""+Password+"\"";
+			DB.rs = DB.stmt.executeQuery(query);
+
+			if (DB.rs.next()) {
+				int role = DB.rs.getInt("Role");
+				DB.Disconnect();
+				return role;
 			}
 
 		} catch (Exception ex) {
 			System.out.println("ERROR" + ex);
-		}
-		return false;
+		};
+		return -1;
 	}
+	
 
-	public void systemLogin(String Username, String Password) throws Exception {
-		try {
-			String query = "Select * From `users` where Username=\"" + Username
-					+ "\" AND Password=\"" + Password + "\"";
-			resSet = DB.stmt.executeQuery(query);
-
-			if (resSet.next()) {
-				int role = resSet.getInt("Role");
-				switch (role) {
-				case 1:
-					System.out.println("Welcome Dr.");
-					break;
-				case 2:
-					System.out.println("Welcome Receptionist.");
-					break;
-				case 3:
-					System.out.println("Welcome Record Staff.");
-					break;
-				}
-			} else {
-				System.out.println("Invalid username or password.");
-			}
-
-		} catch (Exception ex) {
-			System.out.println("ERROR" + ex);
-		}
-	}
-
-	public static void main(String[] args) {
+	public static void main(String [] args){
 		try {
 			Login objA = new Login();
-			objA.systemLogin("safxen01", "678678");
-
+			int r = objA.systemLogin("mpapae03", "555555");
+			System.out.println(r);
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
+	
 }
