@@ -10,7 +10,7 @@ public class UpdateConsultationDoctor {
 	}
 	public void setUpdated(int updated, int id, String docId, String date){
 		try {
-			String query= "UPDATE `psixas_schema`.`consultation` SET `Updated`="+updated+" WHERE `PatientID`="+id+" and`DoctorID`='"+docId+"' and`Date`='"+date+"'";
+			String query= "UPDATE `consultation` SET `Updated`="+updated+" WHERE `PatientID`="+id+" and`DoctorID`='"+docId+"' and`Date`='"+date+"'";
 			DB.rc = DB.stmt.executeUpdate(query);
 			DB.Disconnect();
 
@@ -21,7 +21,7 @@ public class UpdateConsultationDoctor {
 	
 	public void setIgnoredWarnings(int ignored, int id, String docId, String date){
 		try {
-			String query= "UPDATE `psixas_schema`.`consultation` SET `IgnoredWarnings`="+ignored+" WHERE `PatientID`="+id+" and`DoctorID`='"+docId+"' and`Date`='"+date+"'";
+			String query= "UPDATE `consultation` SET `IgnoredWarnings`="+ignored+" WHERE `PatientID`="+id+" and`DoctorID`='"+docId+"' and`Date`='"+date+"'";
 			DB.rc = DB.stmt.executeUpdate(query);
 			DB.Disconnect();
 
@@ -32,7 +32,7 @@ public class UpdateConsultationDoctor {
 	
 	public void setDiagnosis(int diagnosisID, int id, String docId, String date){
 		try {
-			String query= "UPDATE `psixas_schema`.`consultation` SET `DiagnosisID`="+diagnosisID+" WHERE `PatientID`="+id+" and`DoctorID`='"+docId+"' and`Date`='"+date+"'";
+			String query= "UPDATE `consultation` SET `DiagnosisID`="+diagnosisID+" WHERE `PatientID`="+id+" and`DoctorID`='"+docId+"' and`Date`='"+date+"'";
 			DB.rc = DB.stmt.executeUpdate(query);
 			DB.Disconnect();
 
@@ -43,7 +43,7 @@ public class UpdateConsultationDoctor {
 	
 	public void setTreatment(String treatmentID, int id, String docId, String date){
 		try {
-			String query= "UPDATE `psixas_schema`.`consultation` SET `TreatmentID`='"+treatmentID+"' WHERE `PatientID`="+id+" and`DoctorID`='"+docId+"' and`Date`='"+date+"'";
+			String query= "UPDATE `consultation` SET `TreatmentID`='"+treatmentID+"' WHERE `PatientID`="+id+" and`DoctorID`='"+docId+"' and`Date`='"+date+"'";
 			DB.rc = DB.stmt.executeUpdate(query);
 			DB.Disconnect();
 
@@ -54,7 +54,7 @@ public class UpdateConsultationDoctor {
 	
 	public void setComment(String comment, int id, String docId, String date){
 		try {
-			String query= "UPDATE `psixas_schema`.`consultation` SET `Comments`='"+comment+"' WHERE `PatientID`="+id+" and`DoctorID`='"+docId+"' and`Date`='"+date+"'";
+			String query= "UPDATE `consultation` SET `Comments`='"+comment+"' WHERE `PatientID`="+id+" and`DoctorID`='"+docId+"' and`Date`='"+date+"'";
 			DB.rc = DB.stmt.executeUpdate(query);
 			DB.Disconnect();
 

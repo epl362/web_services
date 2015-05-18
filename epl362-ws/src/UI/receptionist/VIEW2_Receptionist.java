@@ -39,12 +39,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class ViewReceptionist extends JFrame {
+public class VIEW2_Receptionist extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
 	
-	static ViewReceptionist frame;
+	static VIEW2_Receptionist frame;
 
 	/**
 	 * Test Unit
@@ -55,13 +55,16 @@ public class ViewReceptionist extends JFrame {
 		create(user);
 	}
 	
+	/*
+	 * TODO get patients from hospital
+	 */
 	
 	public static void create(User user) {
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frame = new ViewReceptionist(user);
+					frame = new VIEW2_Receptionist(user);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -75,7 +78,7 @@ public class ViewReceptionist extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ViewReceptionist(User user) {
+	public VIEW2_Receptionist(User user) {
 		
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

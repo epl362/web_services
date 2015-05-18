@@ -62,6 +62,22 @@
                 
                // No methods generated for meps other than in-out
                 
+           /**
+            * auto generated Axis2 call back method for getAppointmentsOfClinitSortedByDate method
+            * override this method for handling normal response from getAppointmentsOfClinitSortedByDate operation
+            */
+           public void receiveResultgetAppointmentsOfClinitSortedByDate(
+                    GetAppointmentsCL.GetAppointmentsStub.GetAppointmentsOfClinitSortedByDateResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getAppointmentsOfClinitSortedByDate operation
+           */
+            public void receiveErrorgetAppointmentsOfClinitSortedByDate(java.lang.Exception e) {
+            }
+                
 
 
     }

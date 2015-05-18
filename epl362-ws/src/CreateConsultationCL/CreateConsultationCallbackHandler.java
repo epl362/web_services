@@ -46,7 +46,21 @@
         
                // No methods generated for meps other than in-out
                 
-               // No methods generated for meps other than in-out
+           /**
+            * auto generated Axis2 call back method for insertConsultation method
+            * override this method for handling normal response from insertConsultation operation
+            */
+           public void receiveResultinsertConsultation(
+                    CreateConsultationCL.CreateConsultationStub.InsertConsultationResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from insertConsultation operation
+           */
+            public void receiveErrorinsertConsultation(java.lang.Exception e) {
+            }
                 
 
 

@@ -15,7 +15,7 @@ public class UpdateConsultationReceptionist {
 
 	public void setShowedUp(int showed, int id, String docId, String date){
 		try {
-			String query= "UPDATE `psixas_schema`.`consultation` SET `ShowedUp`="+showed+" WHERE `PatientID`="+id+" and`DoctorID`='"+docId+"' and`Date`='"+date+"'";
+			String query= "UPDATE `consultation` SET `ShowedUp`="+showed+" WHERE `PatientID`="+id+" and`DoctorID`='"+docId+"' and`Date`='"+date+"'";
 			DB.rc = DB.stmt.executeUpdate(query);
 			DB.Disconnect();
 
@@ -26,7 +26,7 @@ public class UpdateConsultationReceptionist {
 	
 	public void setDroppedIn(int dropped, int id, String docId, String date){
 		try {
-			String query= "UPDATE `psixas_schema`.`consultation` SET `DroppedIn`="+dropped+" WHERE `PatientID`="+id+" and`DoctorID`='"+docId+"' and`Date`='"+date+"'";
+			String query= "UPDATE `consultation` SET `DroppedIn`="+dropped+" WHERE `PatientID`="+id+" and`DoctorID`='"+docId+"' and`Date`='"+date+"'";
 			DB.rc = DB.stmt.executeUpdate(query);
 			DB.Disconnect();
 

@@ -12,7 +12,7 @@ public class Diagnosis {
 		String diagnosis = "";
 		try {
 			// INFO database name here is needed because condition is a reserved word
-			String query = "SELECT * FROM " + DB.name + ".condition";
+			String query = "SELECT * FROM " + "condition_";
 			DB.rs = DB.stmt.executeQuery(query);
 
 			while (DB.rs.next()) {
@@ -32,7 +32,7 @@ public class Diagnosis {
 	public String getConditionDiagnosis() {
 		String desciption = "";
 		try {
-			String query = "SELECT * FROM " + DB.name + ".condition";
+			String query = "SELECT * FROM " + "condition_";
 			DB.rs = DB.stmt.executeQuery(query);
 
 			while (DB.rs.next()) {
