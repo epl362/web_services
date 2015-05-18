@@ -86,4 +86,4 @@ hs_err_pid*
 build.xml
 
 
-DBCredentials.java
+epl362-ws/src/Connection/DBCredentials.java
