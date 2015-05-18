@@ -16,16 +16,23 @@ import javax.swing.JButton;
 import Data.User;
 import LoginCL.LoginController;
 import LoginCL.LoginExceptionException;
+import UI.receptionist.ViewReceptionist;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
 
-public class Login extends JFrame {
+public class ViewLogin extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textUser;
 	private JTextField textPass;
+	/** The current frame. Will be used for navigation (when the next frame closes, this one will become visible again
+	  */
+	public static ViewLogin frame = null;
+	
+	/** Logged in user */
+	static User user=null;
 
 	/**
 	 * Launch the application.
@@ -37,7 +44,7 @@ public class Login extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Login frame = new Login();
+					frame = new ViewLogin();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +56,7 @@ public class Login extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Login() {
+	public ViewLogin() {
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 336, 248);
@@ -95,17 +102,19 @@ public class Login extends JFrame {
 				String username = textUser.getText();
 				String pass = textPass.getText();
 				try {
-					User user = syslogin.getUser(username, pass);
+					user = syslogin.getUser(username, pass);
 
 					switch(user==null?-1:user.role){
 					case 1: 
-						DatePicker frame;
-						frame = new DatePicker(username);
-						frame.setVisible(true);
-						setVisible(false);
+						DatePicker datePickerFrame;
+						datePickerFrame = new DatePicker(username);
+						datePickerFrame.setVisible(true); // new frame
+						frame.setVisible(false); // this frame
 						break;
 					case 2:
-						System.out.println("Welcome Receptionist.");
+						// Show the interface for the Receptionist
+						ViewReceptionist.create(user);
+						frame.setVisible(false);
 						break;
 					case 3:
 						System.out.println("Welcome Record Staff.");

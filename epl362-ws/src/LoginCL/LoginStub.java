@@ -204,7 +204,7 @@
                     /**
                      * Auto generated method signature
                      * 
-                     * @see LoginCL.Login#systemLogin
+                     * @see LoginCL.ViewLogin#systemLogin
                      * @param systemLogin1
                     
                      * @throws LoginCL.LoginExceptionException : 
@@ -332,7 +332,7 @@
                 /**
                 * Auto generated method signature for Asynchronous Invocations
                 * 
-                * @see LoginCL.Login#startsystemLogin
+                * @see LoginCL.ViewLogin#startsystemLogin
                     * @param systemLogin1
                 
                 */

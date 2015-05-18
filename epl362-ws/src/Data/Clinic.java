@@ -2,9 +2,9 @@ package Data;
 
 
 public class Clinic {
-	String clinicID;
-	String name;
-	String location;
+	public String clinicID;
+	public String name;
+	public String location;
 	
 	
 	public Clinic(String id, String nm, String loc){
