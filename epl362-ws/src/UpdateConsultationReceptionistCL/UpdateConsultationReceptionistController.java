@@ -37,7 +37,7 @@ public class UpdateConsultationReceptionistController {
 	
 	public static void main (String [] args) throws RemoteException{
 		UpdateConsultationReceptionistController randevouz = new UpdateConsultationReceptionistController();
-		randevouz.setShowedUp(0, 966666, "tpapak01", "2015-05-21");
+		randevouz.setShowedUp(1, 966666, "tpapak01", "2015-05-21");
 		randevouz.setDroppedIn(1, 966666, "tpapak01", "2015-05-21");
 	}
 

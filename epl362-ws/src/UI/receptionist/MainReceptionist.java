@@ -31,6 +31,8 @@ import javax.swing.JButton;
 import UI.ViewLogin;
 import Data.Clinic;
 import Data.User;
+import LoginCL.LoginController;
+import LoginCL.LoginExceptionException;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -39,24 +41,33 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.Color;
+import java.rmi.RemoteException;
 
 public class MainReceptionist extends JFrame {
 
 	private JPanel contentPane;
 	
 	static MainReceptionist frame;
+	static User user;
 
 	/**
 	 * Test Unit
+	 * @throws LoginExceptionException 
+	 * @throws RemoteException 
 	 */
-	public static void main(String[] args) {
-		User user = new User("user","MyName",2);
-		user.clinic = new Clinic("clinic99","GenikoNosok", "Nicosia");
+	public static void main(String[] args) throws RemoteException, LoginExceptionException {
+		
+		
+		LoginController syslogin = new LoginController();
+		user = syslogin.getUser("mpapae", "555555");
+	
 		create(user);
 	}
 	
 	
 	public static void create(User user) {
+		
+		MainReceptionist.user=user;
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -134,8 +145,15 @@ public class MainReceptionist extends JFrame {
 		btnLogout.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				setVisible(false);
-				ViewLogin.frame.setVisible(true);
+				
+				if (ViewLogin.frame != null) {
+					setVisible(false);
+					ViewLogin.frame.setVisible(true);
+				} else {
+					System.exit(0);
+				}
+				
+				
 			}
 		});
 		

@@ -3,6 +3,7 @@ package UI.receptionist;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Point;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -11,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
@@ -38,13 +40,19 @@ import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.StringTokenizer;
+import java.awt.Component;
+
+import javax.swing.Box;
+import javax.swing.JSeparator;
 
 public class Book extends JFrame {
 
 	private JPanel contentPane;
 	static Book frame;
-	private JTable table;
+	private static JTable table;
 
+	static Appointment[] appointment;
+	static int appointmentIndex;
 	static Patient[] patients;
 	static User[] clinicalStaff;
 	static User user;
@@ -63,15 +71,15 @@ public class Book extends JFrame {
 			create(user);
 
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (LoginExceptionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	public static void create(User user) {
+		
+		Book.user=user;
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -88,8 +96,6 @@ public class Book extends JFrame {
 					frame = new Book(user);
 					frame.setVisible(true);
 
-					// Get the appointments based on the clinic ID of the
-					// receptionist
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -113,14 +119,13 @@ public class Book extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblWelcome = new JLabel("Create consultation");
+		JLabel lblWelcome = new JLabel("Update consultation");
 		lblWelcome.setHorizontalAlignment(SwingConstants.CENTER);
 		lblWelcome.setFont(new Font("Lucida Grande", Font.BOLD, 20));
-		lblWelcome.setBounds(6, 6, 588, 17);
+		lblWelcome.setBounds(6, 6, 588, 29);
 		contentPane.add(lblWelcome);
 
-		JLabel lblHospitalConsultations = new JLabel(user.clinic.name
-				+ " consultations:");
+		JLabel lblHospitalConsultations = new JLabel( user.clinic.name+  " Calendar:");
 		lblHospitalConsultations.setBounds(6, 35, 303, 16);
 		contentPane.add(lblHospitalConsultations);
 
@@ -129,16 +134,51 @@ public class Book extends JFrame {
 		contentPane.add(scrollPane);
 
 		table = new JTable();
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 		scrollPane.setViewportView(table);
+		
 
+		JButton btnUpdateConsultation = new JButton("no consultation selected");
+		btnUpdateConsultation.setEnabled(false);
+		btnUpdateConsultation.setBounds(119, 243, 350, 29);
+		contentPane.add(btnUpdateConsultation);
 		
 		refreshAppointments();
+		
+		table.addMouseListener(new MouseAdapter() {
+		    public void mousePressed(MouseEvent me) {
+		        JTable table =(JTable) me.getSource();
+		        Point p = me.getPoint();
+		        appointmentIndex = table.rowAtPoint(p);
+		        
+		        btnUpdateConsultation.setText("Update #" + (appointmentIndex+1) + " " + appointment[appointmentIndex].patient.name);
+		        btnUpdateConsultation.setEnabled(true);
+		   
+		    }
+		});
+		
+		
+		btnUpdateConsultation.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				if(!btnUpdateConsultation.isEnabled()) return;
+				
+				if(appointmentIndex>=0){
+					UpdateConsultation.create(appointment[appointmentIndex]);
+					frame.setVisible(false);
+				}
+			}
+		});
+
+		
+		
 
 		JLabel label = new JLabel("New consultation");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Lucida Grande", Font.BOLD, 20));
-		label.setBounds(6, 252, 588, 17);
+		label.setBounds(6, 301, 588, 17);
 		contentPane.add(label);
 
 		JButton btnBack = new JButton("Back");
@@ -163,7 +203,7 @@ public class Book extends JFrame {
 			cmbDay.addItem("" + i);
 		}
 		cmbDay.setSelectedIndex(0);
-		cmbDay.setBounds(6, 296, 60, 27);
+		cmbDay.setBounds(6, 345, 60, 27);
 		contentPane.add(cmbDay);
 
 		JComboBox<String> cmbMonth = new JComboBox<String>();
@@ -171,23 +211,23 @@ public class Book extends JFrame {
 			cmbMonth.addItem("" + i);
 		}
 		cmbMonth.setSelectedIndex(0);
-		cmbMonth.setBounds(62, 296, 60, 27);
+		cmbMonth.setBounds(62, 345, 60, 27);
 		contentPane.add(cmbMonth);
 
 		JComboBox<String> cmbYear = new JComboBox<String>();
 		cmbYear.addItem("2015");
 		cmbYear.setSelectedIndex(0);
-		cmbYear.setBounds(6, 335, 116, 27);
+		cmbYear.setBounds(6, 384, 116, 27);
 		contentPane.add(cmbYear);
 
 		JLabel lblDate = new JLabel("Date");
 		lblDate.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDate.setBounds(5, 281, 117, 17);
+		lblDate.setBounds(5, 330, 117, 17);
 		contentPane.add(lblDate);
 
 		JComboBox<String> cmbTime = new JComboBox<String>();
 
-		cmbTime.setBounds(6, 374, 116, 27);
+		cmbTime.setBounds(6, 423, 116, 27);
 		contentPane.add(cmbTime);
 
 		JLabel lblTime = new JLabel("Time");
@@ -196,16 +236,16 @@ public class Book extends JFrame {
 			cmbTime.addItem(i + ":00");
 		}
 		cmbTime.setSelectedIndex(0);
-		lblTime.setBounds(6, 361, 117, 17);
+		lblTime.setBounds(6, 410, 117, 17);
 		contentPane.add(lblTime);
 
 		JLabel lblYear = new JLabel("Year");
 		lblYear.setHorizontalAlignment(SwingConstants.CENTER);
-		lblYear.setBounds(6, 320, 117, 17);
+		lblYear.setBounds(6, 369, 117, 17);
 		contentPane.add(lblYear);
 
 		JComboBox<String> cmbPatient = new JComboBox<String>();
-		cmbPatient.setBounds(134, 296, 257, 27);
+		cmbPatient.setBounds(134, 345, 257, 27);
 		contentPane.add(cmbPatient);
 		for (Patient p : patients) {
 			cmbPatient.addItem(p.name + " (" + p.patientID + ")");
@@ -214,16 +254,16 @@ public class Book extends JFrame {
 
 		JLabel lblPatient = new JLabel("Patient");
 		lblPatient.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPatient.setBounds(133, 281, 117, 17);
+		lblPatient.setBounds(133, 330, 117, 17);
 		contentPane.add(lblPatient);
 
 		JLabel lblDoctor = new JLabel("Doctor");
 		lblDoctor.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDoctor.setBounds(134, 320, 117, 17);
+		lblDoctor.setBounds(134, 369, 117, 17);
 		contentPane.add(lblDoctor);
 
 		JComboBox<String> cmbDoctor = new JComboBox<String>();
-		cmbDoctor.setBounds(134, 335, 257, 27);
+		cmbDoctor.setBounds(134, 384, 257, 27);
 		contentPane.add(cmbDoctor);
 		for (User u : clinicalStaff) {
 			cmbDoctor.addItem(u.name + " (" + u.username + ")");
@@ -256,10 +296,6 @@ public class Book extends JFrame {
 										"Failed!", JOptionPane.ERROR_MESSAGE);
 					} else {
 						refreshAppointments();
-
-						JOptionPane.showMessageDialog(null,
-								"Appointment saved", "Success",
-								JOptionPane.INFORMATION_MESSAGE);
 					}
 
 				} catch (RemoteException e1) {
@@ -270,8 +306,13 @@ public class Book extends JFrame {
 			}
 		});
 
-		btnBook.setBounds(407, 295, 117, 61);
+		btnBook.setBounds(407, 344, 117, 61);
 		contentPane.add(btnBook);
+		
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(6, 284, 588, 12);
+		contentPane.add(separator);
 	}
 
 	/**
@@ -280,22 +321,46 @@ public class Book extends JFrame {
 	 * @param model
 	 * @throws RemoteException 
 	 */
-	private void refreshAppointments() throws RemoteException {
+	static void refreshAppointments()  {
 
-		DefaultTableModel model = new DefaultTableModel(0, 0);
+		
+		
+		
+		DefaultTableModel model = new DefaultTableModel(0,0) {
+
+		    @Override
+		    public boolean isCellEditable(int row, int column) {
+		       //all cells false
+		       return false;
+		    }
+		};
+		
+
 
 		String[] header = new String[] { "#", "Date", "Hour", "Doctor",
 				"Patient" };
 		model.setColumnIdentifiers(header);
 
 
-		appointmentsController = new GetAppointmentsController(user.clinic.clinicID);
-		Appointment[] appointment = appointmentsController.getAppointments();
+		
+		if(user==null){
+			System.out.println("user is null");
+		}
+		if(user.clinic==null){
+			System.out.println("user.clinic is null");
+		}
+		
+		try {
+			appointmentsController = new GetAppointmentsController(user.clinic.clinicID);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		appointment = appointmentsController.getAppointments();
 
 
 		SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
 		SimpleDateFormat formatHours = new SimpleDateFormat("HH:mm");
-		System.out.println("applen: " + appointment.length);
 
 		for (int i = 0; i < appointment.length; i++) {
 
