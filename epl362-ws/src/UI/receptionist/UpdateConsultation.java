@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -18,6 +19,8 @@ import java.awt.Font;
 import javax.swing.JSeparator;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
@@ -28,6 +31,7 @@ import javax.swing.JToggleButton;
 import Data.Appointment;
 import Data.Patient;
 import Data.User;
+import DeleteConsultationCL.DeleteConsultationController;
 import GetAppointmentsCL.GetAppointmentsController;
 import GetPatientsCL.GetPatientsController;
 import GetUsersAndClinicsCL.GetUsersAndClinicsController;
@@ -114,9 +118,8 @@ public static void create(Appointment selectedAppointment) {
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(327, 243, 117, 29);
 		contentPane.add(btnBack);
-		btnBack.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				if (Book.frame != null) {
 					Book.refreshAppointments();
@@ -129,6 +132,44 @@ public static void create(Appointment selectedAppointment) {
 		});
 		
 		JButton btnDelete = new JButton("Delete");
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			    int response = JOptionPane.showConfirmDialog(null, "Are you sure?", "Delete consultation",
+			        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+			    if (response == JOptionPane.YES_OPTION) {   
+
+					SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+					String strDate = sdf1.format(app.date.getTime());
+					SimpleDateFormat sdf2 = new SimpleDateFormat("HH");
+					
+					int time = Integer.parseInt(sdf2.format(app.date.getTime()));
+					
+			    	try {
+						new DeleteConsultationController(app.patient.patientID, app.doctorID, strDate, time);
+						
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+			    	
+			    	
+					if (Book.frame != null) {
+						Book.refreshAppointments();
+						
+						Book.btnUpdateConsultation.setText("no consultation selected");
+						Book.btnUpdateConsultation.setEnabled(false);
+						
+						Book.frame.setVisible(true);
+						setVisible(false);
+					} else {
+						System.exit(0);
+					}
+			   
+			    }
+				
+			}
+		});
 		btnDelete.setBounds(171, 218, 117, 29);
 		contentPane.add(btnDelete);
 		
@@ -170,9 +211,8 @@ public static void create(Appointment selectedAppointment) {
 		
 		// Update dropped in
 		JToggleButton tglbtnShowedUp = new JToggleButton("Showed Up");
-		tglbtnShowedUp.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		tglbtnShowedUp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				System.out.println("state: " + tglbtnShowedUp.isSelected());
 				
 				SimpleDateFormat sfd = new SimpleDateFormat("yyyy-MM-dd");
@@ -196,9 +236,8 @@ public static void create(Appointment selectedAppointment) {
 
 		// Update dropped in
 		JToggleButton tglbtnDroppedIn = new JToggleButton("Dropped In");
-		tglbtnDroppedIn.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		tglbtnDroppedIn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				System.out.println("state: " + tglbtnDroppedIn.isSelected());
 				
 				SimpleDateFormat sfd = new SimpleDateFormat("yyyy-MM-dd");

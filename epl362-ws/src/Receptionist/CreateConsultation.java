@@ -63,7 +63,7 @@ public class CreateConsultation {
 
 	public static void main(String[] args) {
 		CreateConsultation randevouz = new CreateConsultation();
-		boolean done = randevouz.insertConsultation(999999, "eandre02", "2015-05-18", 11);
+		boolean done = randevouz.insertConsultation(999999, "eandre02", "2020-12-31", 23);
 		
 		if(!done){
 			System.out.println("Appointment exists!");
@@ -74,3 +74,16 @@ public class CreateConsultation {
 		
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -48,6 +48,7 @@ import javax.swing.JSeparator;
 public class Book extends JFrame {
 
 	private JPanel contentPane;
+	static JButton btnUpdateConsultation;
 	static Book frame;
 	private static JTable table;
 
@@ -139,7 +140,7 @@ public class Book extends JFrame {
 		scrollPane.setViewportView(table);
 		
 
-		JButton btnUpdateConsultation = new JButton("no consultation selected");
+		btnUpdateConsultation = new JButton("no consultation selected");
 		btnUpdateConsultation.setEnabled(false);
 		btnUpdateConsultation.setBounds(119, 243, 350, 29);
 		contentPane.add(btnUpdateConsultation);
@@ -159,9 +160,8 @@ public class Book extends JFrame {
 		});
 		
 		
-		btnUpdateConsultation.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnUpdateConsultation.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				
 				if(!btnUpdateConsultation.isEnabled()) return;
 				
@@ -182,9 +182,8 @@ public class Book extends JFrame {
 		contentPane.add(label);
 
 		JButton btnBack = new JButton("Back");
-		btnBack.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				if (MainReceptionist.frame != null) {
 					MainReceptionist.frame.setVisible(true);
@@ -203,7 +202,7 @@ public class Book extends JFrame {
 			cmbDay.addItem("" + i);
 		}
 		cmbDay.setSelectedIndex(0);
-		cmbDay.setBounds(6, 345, 60, 27);
+		cmbDay.setBounds(6, 345, 80, 27);
 		contentPane.add(cmbDay);
 
 		JComboBox<String> cmbMonth = new JComboBox<String>();
@@ -211,23 +210,23 @@ public class Book extends JFrame {
 			cmbMonth.addItem("" + i);
 		}
 		cmbMonth.setSelectedIndex(0);
-		cmbMonth.setBounds(62, 345, 60, 27);
+		cmbMonth.setBounds(86, 345, 80, 27);
 		contentPane.add(cmbMonth);
 
 		JComboBox<String> cmbYear = new JComboBox<String>();
 		cmbYear.addItem("2015");
 		cmbYear.setSelectedIndex(0);
-		cmbYear.setBounds(6, 384, 116, 27);
+		cmbYear.setBounds(6, 384, 160, 27);
 		contentPane.add(cmbYear);
 
 		JLabel lblDate = new JLabel("Date");
 		lblDate.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDate.setBounds(5, 330, 117, 17);
+		lblDate.setBounds(6, 330, 160, 17);
 		contentPane.add(lblDate);
 
 		JComboBox<String> cmbTime = new JComboBox<String>();
 
-		cmbTime.setBounds(6, 423, 116, 27);
+		cmbTime.setBounds(6, 423, 160, 27);
 		contentPane.add(cmbTime);
 
 		JLabel lblTime = new JLabel("Time");
@@ -236,16 +235,16 @@ public class Book extends JFrame {
 			cmbTime.addItem(i + ":00");
 		}
 		cmbTime.setSelectedIndex(0);
-		lblTime.setBounds(6, 410, 117, 17);
+		lblTime.setBounds(6, 410, 160, 17);
 		contentPane.add(lblTime);
 
 		JLabel lblYear = new JLabel("Year");
 		lblYear.setHorizontalAlignment(SwingConstants.CENTER);
-		lblYear.setBounds(6, 369, 117, 17);
+		lblYear.setBounds(6, 369, 160, 17);
 		contentPane.add(lblYear);
 
 		JComboBox<String> cmbPatient = new JComboBox<String>();
-		cmbPatient.setBounds(134, 345, 257, 27);
+		cmbPatient.setBounds(192, 345, 257, 27);
 		contentPane.add(cmbPatient);
 		for (Patient p : patients) {
 			cmbPatient.addItem(p.name + " (" + p.patientID + ")");
@@ -254,16 +253,16 @@ public class Book extends JFrame {
 
 		JLabel lblPatient = new JLabel("Patient");
 		lblPatient.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPatient.setBounds(133, 330, 117, 17);
+		lblPatient.setBounds(192, 330, 117, 17);
 		contentPane.add(lblPatient);
 
 		JLabel lblDoctor = new JLabel("Doctor");
 		lblDoctor.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDoctor.setBounds(134, 369, 117, 17);
+		lblDoctor.setBounds(192, 369, 117, 17);
 		contentPane.add(lblDoctor);
 
 		JComboBox<String> cmbDoctor = new JComboBox<String>();
-		cmbDoctor.setBounds(134, 384, 257, 27);
+		cmbDoctor.setBounds(192, 384, 257, 27);
 		contentPane.add(cmbDoctor);
 		for (User u : clinicalStaff) {
 			cmbDoctor.addItem(u.name + " (" + u.username + ")");
@@ -271,9 +270,8 @@ public class Book extends JFrame {
 		cmbDoctor.setSelectedItem(null);
 
 		JButton btnBook = new JButton("Book");
-		btnBook.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnBook.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 
 				// TODO refresh list after this! w/ a function!
 				// pat id, doctorid, date, time
@@ -306,7 +304,7 @@ public class Book extends JFrame {
 			}
 		});
 
-		btnBook.setBounds(407, 344, 117, 61);
+		btnBook.setBounds(461, 345, 117, 66);
 		contentPane.add(btnBook);
 		
 		

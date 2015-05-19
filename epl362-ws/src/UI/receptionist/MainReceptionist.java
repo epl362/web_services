@@ -112,9 +112,10 @@ public class MainReceptionist extends JFrame {
 		contentPane.add(lblTown);
 		
 		JButton btnBook = new JButton("Book Appointment");
-		btnBook.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		
+		
+		btnBook.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				// Show the interface for the receptionist
 				Book.create(user);
 				frame.setVisible(false);

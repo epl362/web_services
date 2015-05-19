@@ -42,7 +42,7 @@ public class CreateConsultationController {
 	 * @throws RemoteException
 	 */
 	public static void main (String [] args) throws RemoteException{
-		CreateConsultationController randevouz = new CreateConsultationController(9655566, "tpapak01", "2015-05-21", 11);
+		CreateConsultationController randevouz = new CreateConsultationController(999999, "eandre02", "2020-12-31", 23);
 		
 		if(randevouz.getDone()){
 			System.out.println("Appointment added.");
