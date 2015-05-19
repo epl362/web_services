@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
+import javax.swing.UIManager;
 
 import java.awt.Font;
 
@@ -157,8 +158,11 @@ public static void create(Appointment selectedAppointment) {
 					if (Book.frame != null) {
 						Book.refreshAppointments();
 						
-						Book.btnUpdateConsultation.setText("no consultation selected");
+						Book.lblNoConsultationSelected.setText("no consultation selected");
+						Book.lblNoConsultationSelected.setForeground(UIManager.getColor("CheckBox.select"));
+
 						Book.btnUpdateConsultation.setEnabled(false);
+						Book.btnShowRecord.setEnabled(false);
 						
 						Book.frame.setVisible(true);
 						setVisible(false);

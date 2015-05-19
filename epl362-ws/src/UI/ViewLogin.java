@@ -16,7 +16,7 @@ import javax.swing.JButton;
 import Data.User;
 import LoginCL.LoginController;
 import LoginCL.LoginExceptionException;
-import UI.receptionist.MainReceptionist;
+import UI.receptionist.Book;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -113,7 +113,7 @@ public class ViewLogin extends JFrame {
 						break;
 					case 2:
 						// Show the interface for the Receptionist
-						MainReceptionist.create(user);
+						Book.create(user);
 						frame.setVisible(false);
 						break;
 					case 3:
