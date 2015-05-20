@@ -193,8 +193,15 @@ public class Patient {
 		String treat="";
 		try {
 			
-			String query="SELECT `consultation`.TreatmentID, `condition`.Description FROM `consultation`, `condition` WHERE `consultation`.PatientID = "+id+" and `condition`.DiagnosisID=`consultation`.DiagnosisID and `consultation`.Date IN (SELECT max(`consultation`.Date) FROM `consultation` WHERE `consultation`.PatientID = "+id+" and `consultation`.Date < CURDATE() and ShowedUp = 1 and Updated = 1 )";
+			String query="SELECT `consultation`.TreatmentID, `condition_`.Description "
+					+ "FROM `consultation`, `condition_` WHERE `consultation`.PatientID"
+					+ " = "+id+" and `condition_`.DiagnosisID=`consultation`.DiagnosisID"
+							+ " and `consultation`.Date IN (SELECT max(`consultation`.Date)"
+							+ " FROM `consultation` WHERE `consultation`.PatientID = "+id+""
+									+ " and `consultation`.Date < CURDATE() and ShowedUp = 1 "
+									+ "and Updated = 1 )";
 			DB.rs = DB.stmt.executeQuery(query);
+			System.out.println(query);
 			if (DB.rs.next()) {
 				treat = DB.rs.getString("TreatmentID");
 			}
@@ -210,7 +217,7 @@ public class Patient {
 		String diagnosis="";
 		try {
 			
-			String query="SELECT `consultation`.TreatmentID, `condition`.Description FROM `consultation`, `condition` WHERE `consultation`.PatientID = "+id+" and `condition`.DiagnosisID=`consultation`.DiagnosisID and `consultation`.Date IN (SELECT max(`consultation`.Date) FROM `consultation` WHERE `consultation`.PatientID = "+id+" and `consultation`.Date < CURDATE() and ShowedUp = 1 and Updated = 1 )";
+			String query="SELECT `consultation`.TreatmentID, `condition_`.Description FROM `consultation`, `condition_` WHERE `consultation`.PatientID = "+id+" and `condition_`.DiagnosisID=`consultation`.DiagnosisID and `consultation`.Date IN (SELECT max(`consultation`.Date) FROM `consultation` WHERE `consultation`.PatientID = "+id+" and `consultation`.Date < CURDATE() and ShowedUp = 1 and Updated = 1 )";
 			DB.rs = DB.stmt.executeQuery(query);
 			while (DB.rs.next()) {
 				diagnosis = DB.rs.getString("Description");
@@ -282,7 +289,7 @@ public class Patient {
 		String date="";
 		try {
 			
-			String query="SELECT `consultation`.TreatmentID, `condition`.Description, `consultation`.Date FROM `consultation`, `condition` WHERE `consultation`.PatientID = "+id+" and `condition`.DiagnosisID=`consultation`.DiagnosisID and `consultation`.Date IN (SELECT max(`consultation`.Date) FROM `consultation` WHERE `consultation`.PatientID = "+id+" and `consultation`.Date < CURDATE() and ShowedUp = 1 and Updated = 1 )";
+			String query="SELECT `consultation`.TreatmentID, `condition_`.Description, `consultation`.Date FROM `consultation`, `condition_` WHERE `consultation`.PatientID = "+id+" and `condition_`.DiagnosisID=`consultation`.DiagnosisID and `consultation`.Date IN (SELECT max(`consultation`.Date) FROM `consultation` WHERE `consultation`.PatientID = "+id+" and `consultation`.Date < CURDATE() and ShowedUp = 1 and Updated = 1 )";
 			DB.rs = DB.stmt.executeQuery(query);
 			if (DB.rs.next()) {
 				date = DB.rs.getString("Date");
@@ -313,9 +320,7 @@ public class Patient {
 		};
 		return -1;
 	}
-	
-	//http://localhost:8080/epl362_web_service_5/services/Patient?wsdl
-	//Unit Testing
+
 	public static void main (String [] args){
 		Patient panais = new Patient();
 		System.out.println(panais.getLastTreatmentDate(966666));

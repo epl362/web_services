@@ -33,15 +33,15 @@ INSERT INTO `condition_` (`DiagnosisID`, `Description`) VALUES
 
 
 INSERT INTO `drugs` (`DrugID`, `sideEffects`) VALUES
-('drug1', 'description'),
-('drug2', 'description'),
-('drug3', 'description'),
-('drug700', 'description'),
-('drug701', 'description'),
-('drug702', 'description'),
-('drug703', 'description'),
-('drug704', 'description'),
-('drug705', 'description');
+('drug1', 'confusion'),
+('drug2', 'dizziness'),
+('drug3', 'sweating'),
+('drug700', 'Blurred vision'),
+('drug701', 'chest pain'),
+('drug702', 'ear congestion'),
+('drug703', 'nausea'),
+('drug704', 'sneezing'),
+('drug705', 'chills');
 
 
 INSERT INTO `patient` (`PatientID`, `Username`, `Password`, `Name`, `Surname`, `Address`, `Status`, `Dead`, `Relative`) VALUES

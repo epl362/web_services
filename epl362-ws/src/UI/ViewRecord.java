@@ -45,7 +45,8 @@ public class ViewRecord extends JFrame {
 		String docID = "tpapak01";
 		int pID = 966666;
 
-		create(pID, date, docID, ViewRecordCaller.unknown);
+		// Assume it is called by clinical staff
+		create(pID, date, docID, ViewRecordCaller.clinicalStaff);
 	}
 
 	/**
@@ -183,22 +184,40 @@ public class ViewRecord extends JFrame {
 		scrollPaneTreatment.setBounds(266, 317, 172, 73);
 		panel.add(scrollPaneTreatment);
 
-		JButton btnConsultation = new JButton("Consultation");
-		btnConsultation.addActionListener(new ActionListener() {
+		// If it is used by clinical staff, then it will be Consultation
+		// If it is used by the receptionist, then it will be a repeat prescription button
+		JButton btnHybrid = new JButton("");
+		if(from == ViewRecordCaller.clinicalStaff){
+			btnHybrid.setText("Consultation");
+		}
+		else if(from == ViewRecordCaller.receptionist) {
+			btnHybrid.setText("Repeat prescription");
+			
+		}
+		
+		
+		
+		btnHybrid.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				EditRecord frame;
+				
 				try {
-					frame = new EditRecord(id, docID, date);
-					frame.setVisible(true);
+					if(from == ViewRecordCaller.clinicalStaff){
+						EditRecord editRecordFrame;
+						editRecordFrame = new EditRecord(id, docID, date);
+						editRecordFrame.setVisible(true);
+					}
+					else if(from == ViewRecordCaller.receptionist) {
+						ViewRepeatPrescription.create(id, docID, date);
+						frame.setVisible(false);
+					}
 				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 
 			}
 		});
-		btnConsultation.setBounds(178, 441, 125, 29);
-		panel.add(btnConsultation);
+		btnHybrid.setBounds(178, 441, 181, 29);
+		panel.add(btnHybrid);
 		// OVER HERE
 		// if (asthenis.getDead()==0){
 		// panel.add(btnConsultation);
@@ -254,7 +273,6 @@ public class ViewRecord extends JFrame {
 					effects = new DrugsSideEffects();
 					effects.setVisible(true);
 				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
