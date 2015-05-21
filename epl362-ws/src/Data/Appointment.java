@@ -86,6 +86,11 @@ public class Appointment {
 	 * @return a table of Appointment objects
 	 */
 	public static Appointment[] parseAppointments(String raw) {
+		
+		if(raw==null)
+			return null;
+		if(raw.length()==0)
+			return null;
 
 		String line[] = raw.split("\\n");
 		Appointment[] result = new Appointment[line.length];

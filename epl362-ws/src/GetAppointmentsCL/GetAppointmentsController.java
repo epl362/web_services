@@ -80,8 +80,8 @@ public class GetAppointmentsController {
 	//Unit Testing
 	public static void main (String [] args) throws RemoteException{
 //		GetAppointmentsController a = new GetAppointmentsController("2015-04-03", "tchara02");
-		GetAppointmentsController a = new GetAppointmentsController("clinic2");
-		System.out.println(a.getAllAppointments());
+		GetAppointmentsController a = new GetAppointmentsController("clinic1");
+		System.out.println("\""+a.getAllAppointments()+"\"");
 
 	}
 

@@ -18,9 +18,9 @@ INSERT INTO `clinic` (`ClinicID`, `Name`, `Location`) VALUES
 INSERT INTO `consultation` (`PatientID`, `DoctorID`, `Date`, `Time`, `ShowedUp`, `DroppedIn`, `Updated`, `IgnoredWarnings`, `DiagnosisID`, `TreatmentID`, `Comments`) VALUES
 (944444, 'tpapak01', '2015-04-01', 14 , b'1', b'1', b'1', b'1', '1', 'drug1', 'none'),
 (944444, 'tchara02', '2015-04-03', 09, b'0', b'0', b'0', b'0', '1', 'drug3', 'none'),
-(955555, 'tpapak01', '2015-04-02', 10,b'1', b'1', b'1', b'0', '3', 'drug700', 'none'),
+(955555, 'eandre02', '2015-04-02', 10,b'1', b'1', b'1', b'0', '3', 'drug700', 'none'),
 (955555, 'tpapak01', '2015-04-03', 13,b'0', b'0', b'0', b'1', '5', 'drug2', 'none'),
-(966666, 'tchara02', '2015-04-03', 17,b'1', b'1', b'1', b'1', '6', 'drug3', 'none'),
+(966666, 'eandre02', '2015-04-03', 17,b'1', b'1', b'1', b'1', '6', 'drug3', 'none'),
 (977777, 'tchara02', '2015-04-01', 19,b'1', b'1', b'1', b'1', '3', 'drug1', 'none');
 
 INSERT INTO `condition_` (`DiagnosisID`, `Description`) VALUES

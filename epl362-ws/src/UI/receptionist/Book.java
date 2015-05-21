@@ -417,6 +417,7 @@ public class Book extends JFrame {
 		SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
 		SimpleDateFormat formatHours = new SimpleDateFormat("HH:mm");
 
+		if(appointment!=null){
 		for (int i = 0; i < appointment.length; i++) {
 
 			String date = formatDate.format(appointment[i].date.getTime());
@@ -427,5 +428,6 @@ public class Book extends JFrame {
 		}
 
 		table.setModel(model);
+	}
 	}
 }
